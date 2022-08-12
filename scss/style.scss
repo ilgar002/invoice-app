@@ -3,6 +3,8 @@
 
 * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -16,6 +18,7 @@ header {
     display: flex;
     justify-content: space-between;
     position: fixed;
+    z-index: 100;
 
     .logo {
         border-top-right-radius: 20px;
@@ -86,6 +89,7 @@ header {
 
 main {
     background-color: $clr-dark-background;
+    // background: rgba(10, 11, 19, 1);
     display: flex;
     justify-content: center;
 
@@ -101,6 +105,7 @@ main {
                 display: flex;
                 flex-direction: column;
                 gap: 16px;
+
                 .invoice-number {
                     font-size: 0.75rem;
                 }
@@ -110,18 +115,20 @@ main {
                 display: flex;
                 gap: 16px;
                 align-items: center;
+
                 .filter-status {
                     display: flex;
                     align-items: center;
                     gap: 12px;
                     cursor: pointer;
-                    // background-color: #fff;
-                    span{
+
+                    span {
                         font-size: 0.85rem;
                         font-weight: 700;
                     }
                 }
-                .new-invoice{
+
+                .new-invoice-btn {
                     background-color: $clr-purple;
                     color: #fff;
                     display: flex;
@@ -133,7 +140,8 @@ main {
                     font-size: 1rem;
                     font-weight: 700;
                     cursor: pointer;
-                    span{
+
+                    span {
                         background-color: #fff;
                         width: 32px;
                         height: 32px;
@@ -142,6 +150,147 @@ main {
                         justify-content: center;
                         align-items: center;
                     }
+                }
+            }
+        }
+
+        .no-invoice-message {
+            margin-top: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+
+            img {
+                width: 242px;
+                height: 200px;
+                margin-bottom: 50px;
+            }
+
+            p {
+                font-size: 1.4rem;
+                font-weight: 700;
+            }
+
+            span {
+                margin-top: 24px;
+                width: 210px;
+                font-size: 0.8rem;
+                // line-height: .9375rem;
+                letter-spacing: -.25px;
+                text-align: center;
+                color: #888eb0;
+            }
+
+        }
+    }
+
+    .create-new-invoice {
+        width: 720px;
+        height: 100vh;
+        overflow-y: scroll;
+        padding: 22px;
+        background-color: $clr-dark-background;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        position: absolute;
+        left: 105px;
+        z-index: 4;
+        // transition: transform .3s ease;
+
+        .title {
+            font-size: 1.7rem
+        }
+
+        .new-invoice-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 24px;
+            color: #fff;
+
+            .direction {
+                color: $clr-purple;
+                font-size: .85rem;
+                letter-spacing: -.25px;
+                font-weight: 700;
+            }
+
+            .description {
+                font-size: .85rem;
+                letter-spacing: -.25px;
+            }
+
+            input {
+                height: 48px;
+                border-radius: 5px;
+                border: 1px solid $clr-primary;
+                background-color: #1e2139;
+                margin-bottom: 12px;
+                padding-left: 16px;
+                padding-right: 16px;
+                color: #fff;
+                font-weight: 700;
+                font-size: .9rem;
+            }
+
+            .xl-input-container {
+                display: flex;
+                gap: 8px;
+
+                .xs-input-container {
+                    display: flex;
+                    gap: 12px;
+                    flex-direction: column;
+                    flex-grow: 1;
+                }
+            }
+
+            .select-date {
+                position: relative;
+                margin-bottom: 12px;
+                cursor: pointer;
+
+                input {
+                    width: 100%;
+                    margin-bottom: 0;
+                    cursor: pointer;
+                }
+
+                svg {
+                    position: absolute;
+                    right: 7%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    fill: #7E88C3;
+                }
+            }
+
+            .select-term {
+                position: relative;
+                margin-bottom: 12px;
+                cursor: pointer;
+
+                input {
+                    width: 100%;
+                    margin-bottom: 0;
+                    cursor: pointer;
+                }
+
+                svg {
+                    position: absolute;
+                    right: 7%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+
+            .items {
+                .item-title {
+                    font-size: 1.3rem;
+                    font-weight: 700;
+                    color: #777f98;
+                    margin-bottom: 1.5rem;
                 }
             }
         }
@@ -158,6 +307,11 @@ main {
 
         .logo {
             height: 100px;
+            border-bottom-right-radius: 20px;
+
+            &::after {
+                border-bottom-right-radius: 20px;
+            }
         }
 
         .theme-profile {
@@ -171,12 +325,22 @@ main {
     }
 
     main {
-        background-color: $clr-dark-background;
         height: 100vh;
         padding-left: 110px;
 
         .main-content {
             padding-top: 72px;
+        }
+
+        .filter-layout {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            left: 110px;
+            top: 0;
+            z-index: 3;
+            background: rgba(0, 0, 0, .4984);
+            ;
         }
     }
 }

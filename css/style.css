@@ -1,5 +1,8 @@
 * {
   margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -17,6 +20,7 @@ header {
       -ms-flex-pack: justify;
           justify-content: space-between;
   position: fixed;
+  z-index: 100;
 }
 
 header .logo {
@@ -32,7 +36,7 @@ header .logo {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #7C5DFA;
+  background-color: #7c5dfa;
 }
 
 header .logo svg {
@@ -43,7 +47,7 @@ header .logo::after {
   content: "";
   height: 50%;
   width: 100%;
-  background-color: #9277FF;
+  background-color: #9277ff;
   position: absolute;
   bottom: 0;
   border-top-left-radius: 20px;
@@ -168,8 +172,8 @@ main .main-content .main-caption .tools .filter-status span {
   font-weight: 700;
 }
 
-main .main-content .main-caption .tools .new-invoice {
-  background-color: #7C5DFA;
+main .main-content .main-caption .tools .new-invoice-btn {
+  background-color: #7c5dfa;
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -186,7 +190,7 @@ main .main-content .main-caption .tools .new-invoice {
   cursor: pointer;
 }
 
-main .main-content .main-caption .tools .new-invoice span {
+main .main-content .main-caption .tools .new-invoice-btn span {
   background-color: #fff;
   width: 32px;
   height: 32px;
@@ -202,6 +206,165 @@ main .main-content .main-caption .tools .new-invoice span {
           align-items: center;
 }
 
+main .main-content .no-invoice-message {
+  margin-top: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+}
+
+main .main-content .no-invoice-message img {
+  width: 242px;
+  height: 200px;
+  margin-bottom: 50px;
+}
+
+main .main-content .no-invoice-message p {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+main .main-content .no-invoice-message span {
+  margin-top: 24px;
+  width: 210px;
+  font-size: 0.8rem;
+  letter-spacing: -.25px;
+  text-align: center;
+  color: #888eb0;
+}
+
+main .create-new-invoice {
+  width: 720px;
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 22px;
+  background-color: #141625;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  position: absolute;
+  left: 105px;
+  z-index: 4;
+}
+
+main .create-new-invoice .title {
+  font-size: 1.7rem;
+}
+
+main .create-new-invoice .new-invoice-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+  color: #fff;
+}
+
+main .create-new-invoice .new-invoice-form .direction {
+  color: #7c5dfa;
+  font-size: .85rem;
+  letter-spacing: -.25px;
+  font-weight: 700;
+}
+
+main .create-new-invoice .new-invoice-form .description {
+  font-size: .85rem;
+  letter-spacing: -.25px;
+}
+
+main .create-new-invoice .new-invoice-form input {
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid #252945;
+  background-color: #1e2139;
+  margin-bottom: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  color: #fff;
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+main .create-new-invoice .new-invoice-form .xl-input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8px;
+}
+
+main .create-new-invoice .new-invoice-form .xl-input-container .xs-input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 12px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+main .create-new-invoice .new-invoice-form .select-date {
+  position: relative;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+main .create-new-invoice .new-invoice-form .select-date input {
+  width: 100%;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+main .create-new-invoice .new-invoice-form .select-date svg {
+  position: absolute;
+  right: 7%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  fill: #7E88C3;
+}
+
+main .create-new-invoice .new-invoice-form .select-term {
+  position: relative;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+main .create-new-invoice .new-invoice-form .select-term input {
+  width: 100%;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+main .create-new-invoice .new-invoice-form .select-term svg {
+  position: absolute;
+  right: 7%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+main .create-new-invoice .new-invoice-form .items .item-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #777f98;
+  margin-bottom: 1.5rem;
+}
+
 @media (min-width: 1440px) {
   header {
     -webkit-box-orient: vertical;
@@ -215,6 +378,10 @@ main .main-content .main-caption .tools .new-invoice span {
   }
   header .logo {
     height: 100px;
+    border-bottom-right-radius: 20px;
+  }
+  header .logo::after {
+    border-bottom-right-radius: 20px;
   }
   header .theme-profile {
     -webkit-box-orient: vertical;
@@ -227,12 +394,20 @@ main .main-content .main-caption .tools .new-invoice span {
     border-top: 0.9px solid #858BB2;
   }
   main {
-    background-color: #141625;
     height: 100vh;
     padding-left: 110px;
   }
   main .main-content {
     padding-top: 72px;
+  }
+  main .filter-layout {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    left: 110px;
+    top: 0;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.4984);
   }
 }
 
@@ -248,7 +423,7 @@ main .main-content .main-caption .tools .new-invoice span {
   header .logo {
     height: 72px;
     width: 72px;
-    background-color: #7C5DFA;
+    background-color: #7c5dfa;
     border-bottom-right-radius: 20px;
   }
   header .logo::after {
