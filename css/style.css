@@ -1,0 +1,275 @@
+* {
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  color: #fff;
+  font-family: Spartan, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+header {
+  background-color: #252945;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: fixed;
+}
+
+header .logo {
+  border-top-right-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #7C5DFA;
+}
+
+header .logo svg {
+  z-index: 3;
+}
+
+header .logo::after {
+  content: "";
+  height: 50%;
+  width: 100%;
+  background-color: #9277FF;
+  position: absolute;
+  bottom: 0;
+  border-top-left-radius: 20px;
+  z-index: 2;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+header .logo:hover::after {
+  height: 90%;
+  border-top-right-radius: 10px;
+}
+
+header .theme-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .theme-profile .theme-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 32px;
+}
+
+header .theme-profile .theme-buttons .moon-icon {
+  display: none;
+  cursor: pointer;
+}
+
+header .theme-profile .theme-buttons .sun-icon {
+  cursor: pointer;
+}
+
+header .theme-profile .profile-photo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .theme-profile .profile-photo img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+main {
+  background-color: #141625;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .main-content {
+  width: 55%;
+}
+
+main .main-content .main-caption {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .main-content .main-caption .invoices {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+}
+
+main .main-content .main-caption .invoices .invoice-number {
+  font-size: 0.75rem;
+}
+
+main .main-content .main-caption .tools {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 16px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .main-content .main-caption .tools .filter-status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+main .main-content .main-caption .tools .filter-status span {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+main .main-content .main-caption .tools .new-invoice {
+  background-color: #7C5DFA;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+main .main-content .main-caption .tools .new-invoice span {
+  background-color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (min-width: 1440px) {
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100vh;
+    width: 105px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  header .logo {
+    height: 100px;
+  }
+  header .theme-profile {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  header .theme-profile .profile-photo {
+    height: 100px;
+    border-top: 0.9px solid #858BB2;
+  }
+  main {
+    background-color: #141625;
+    height: 100vh;
+    padding-left: 110px;
+  }
+  main .main-content {
+    padding-top: 72px;
+  }
+}
+
+@media (max-width: 1439px) {
+  header {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: 100%;
+    height: 72px;
+  }
+  header .logo {
+    height: 72px;
+    width: 72px;
+    background-color: #7C5DFA;
+    border-bottom-right-radius: 20px;
+  }
+  header .logo::after {
+    border-bottom-right-radius: 20px;
+  }
+  header .theme-profile .theme-buttons {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  header .theme-profile .profile-photo {
+    border-left: 0.9px solid #858BB2;
+    width: 100px;
+  }
+  main {
+    padding-top: 72px;
+    width: 100%;
+    height: calc(100vh - 72px);
+  }
+  main .main-content {
+    margin-top: 56px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
