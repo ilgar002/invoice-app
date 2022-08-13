@@ -193,7 +193,6 @@ main {
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
         position: absolute;
-        // left: -50%;
         z-index: 4;
         transition: all .3s ease;
 
@@ -265,6 +264,8 @@ main {
                 }
             }
 
+            
+
             .select-term {
                 position: relative;
                 margin-bottom: 12px;
@@ -294,6 +295,11 @@ main {
                     right: 7%;
                     top: 50%;
                     transform: translateY(-50%);
+                    transition: all .3s ease;
+
+                    &.rotate-180 {
+                        transform: rotate(180deg);
+                    }
                 }
 
                 .options-dropdwon {
@@ -312,6 +318,10 @@ main {
                         font-size: .9rem;
                         padding: 16px 16px;
                         cursor: pointer;
+                    }
+
+                    &.show {
+                        display: block;
                     }
                 }
             }
@@ -523,7 +533,8 @@ main {
         .main-content {
             padding-top: 72px;
         }
-        .create-new-invoice{
+
+        .create-new-invoice {
             left: -1000px;
         }
     }

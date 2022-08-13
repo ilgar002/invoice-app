@@ -1,101 +1,110 @@
-input:focus {
-    outline: none;
-}
-
-#ui-datepicker-div {
-    display: none;
-    background-color: #1e2139;
-    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
-    margin-top: 0.25rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-.ui-datepicker-calendar thead th {
-    padding: 0.25rem 0;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: rgb(201, 192, 192);
-}
-
-.ui-datepicker-calendar tbody td {
-    width: 2.4rem;
-    text-align: center;
-    padding: 0;
-}
-
-.ui-datepicker-calendar tbody td a {
-    display: block;
-    border-radius: 0.25rem;
-    line-height: 2rem;
-    transition: 0.3s all;
+.date-picker {
+    position: relative;
+    transition: all 0.3s 0s ease-in-out;
+    user-select: none;
+    z-index: 1000;
     color: #fff;
-    font-size: 0.875rem;
-    text-decoration: none;
+
+    .input.result {
+        display: flex;
+        align-items: center;
+        height: 48px;
+        border-radius: 5px;
+        border: 1px solid #252945;
+        background-color: #1e2139;
+        margin-bottom: 12px;
+        padding-left: 16px;
+        padding-right: 16px;
+        color: #fff;
+        font-weight: 700;
+        font-size: .9rem;
+        cursor: pointer;
+    }
+
+    .calendar {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transform: translateY(100%);
+        width: 40%;
+        padding: 8px;
+        background-color: #1e2139;
+        border: 1px solid #252945;
+        border-radius: 8px;
+        display: none;
+        &.show{
+            display: block;
+        }
+
+        .ui-datepicker-header {
+            line-height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+    }
 }
 
-.ui-datepicker-calendar tbody td a:hover {
-    background-color: #9277FF;
-}
 
-.ui-datepicker-calendar tbody td a.ui-state-active {
-    background-color: #9277FF;
-    color: #fff;
-}
-
-.ui-datepicker-header a.ui-corner-all {
+.date-picker .ui-datepicker-prev,
+.date-picker .ui-datepicker-next {
+    width: 16px;
+    height: 16px;
+    background: url(../images/icon-arrow-right.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
     cursor: pointer;
-    position: absolute;
-    top: 0;
-    width: 2rem;
-    height: 2rem;
-    margin: 0.5rem;
-    border-radius: 0.25rem;
-    transition: 0.3s all;
 }
 
-.ui-datepicker-header a.ui-corner-all:hover {
-    background-color: #ECEFF1;
-}
-
-.ui-datepicker-header a.ui-datepicker-prev {
-    left: 0;
-    background: url('../images/icon-arrow-right.svg');
-    background-repeat: no-repeat;
-    background-size: 0.5rem;
-    background-position: 50%;
+.date-picker .ui-datepicker-prev {
+    float: left;
     transform: rotate(180deg);
+    text-indent: 9999px;
 }
 
-.ui-datepicker-header a.ui-datepicker-next {
-    right: 0;
-    background: url('../images/icon-arrow-right.svg');
-    background-repeat: no-repeat;
-    background-size: 8px;
-    background-position: 50%;
+.date-picker .ui-datepicker-prev:after {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin: -43px 0px 0px 8px;
 }
 
-.ui-datepicker-header a>span {
-    display: none;
+.date-picker .ui-datepicker-next {
+    float: right;
+    order: 1;
+    text-indent: -9999px;
 }
 
-.ui-datepicker-title {
+.date-picker .ui-datepicker-title {
     text-align: center;
-    line-height: 2rem;
-    margin-bottom: 0.25rem;
-    font-size: 0.875rem;
     font-weight: 500;
-    padding-bottom: 0.25rem;
 }
 
-.ui-datepicker-week-col {
-    color: #78909C;
+.date-picker .ui-datepicker-calendar {
+    width: 100%;
+    text-align: center;
+}
+
+.date-picker .ui-datepicker-calendar thead tr th span {
+    width: 100%;
+    font-size: 12px;
+    color: #c9c0c0;
     font-weight: 400;
-    font-size: 0.75rem;
+}
+
+.date-picker .ui-state-default {
+    display: block;
+    text-decoration: none;
+    line-height: 35px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: #7c5dfa;
+    }
+}
+
+.ui-state-active {
+    background-color: #7c5dfa;
 }
