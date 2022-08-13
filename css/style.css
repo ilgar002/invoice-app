@@ -356,7 +356,6 @@ main .create-new-invoice {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   position: absolute;
-  left: -50%;
   z-index: 4;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
@@ -719,6 +718,9 @@ main.open-invoice .filter-layout {
   main .main-content {
     padding-top: 72px;
   }
+  main .create-new-invoice {
+    left: -1000px;
+  }
 }
 
 @media (max-width: 1439px) {
@@ -751,10 +753,17 @@ main.open-invoice .filter-layout {
   main {
     padding-top: 72px;
     width: 100%;
-    height: calc(100vh - 72px);
+    height: 100vh;
   }
   main .main-content {
     margin-top: 56px;
+  }
+  main .create-new-invoice {
+    height: calc(100vh - 72px);
+    left: -1000px;
+  }
+  main.open-invoice .create-new-invoice {
+    left: 0 !important;
   }
 }
 /*# sourceMappingURL=style.css.map */
