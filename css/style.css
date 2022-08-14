@@ -245,7 +245,7 @@ main {
 }
 
 main .main-content {
-  width: 55%;
+  width: 58%;
 }
 
 main .main-content .main-caption {
@@ -258,9 +258,10 @@ main .main-content .main-caption {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-bottom: 56px;
 }
 
-main .main-content .main-caption .invoices {
+main .main-content .main-caption .info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -271,7 +272,7 @@ main .main-content .main-caption .invoices {
   gap: 16px;
 }
 
-main .main-content .main-caption .invoices .invoice-number {
+main .main-content .main-caption .info .invoice-number {
   font-size: 0.75rem;
 }
 
@@ -419,6 +420,7 @@ main .main-content .no-invoice-message {
       -ms-flex-align: center;
           align-items: center;
   color: #fff;
+  display: none;
 }
 
 main .main-content .no-invoice-message img {
@@ -439,6 +441,152 @@ main .main-content .no-invoice-message span {
   letter-spacing: -.25px;
   text-align: center;
   color: #888eb0;
+}
+
+main .main-content .no-invoice-message.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .main-content .invoices {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+}
+
+main .main-content .invoices .invoice {
+  background-color: #1F2139;
+  border: 1px solid #1F2139;
+  padding: 24px;
+  line-height: 40px;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+main .main-content .invoices .invoice .id {
+  font-weight: 700;
+  font-size: 0.9rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+main .main-content .invoices .invoice .id .hashtag {
+  color: #9277ff;
+}
+
+main .main-content .invoices .invoice .date {
+  font-size: 0.9rem;
+  font-weight: 400;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+main .main-content .invoices .invoice .client-name {
+  font-size: 0.9rem;
+  font-weight: 400;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+main .main-content .invoices .invoice .amount {
+  font-weight: 900;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+main .main-content .invoices .invoice .status {
+  height: 40px;
+  max-width: 110px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 8px;
+  gap: 8px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+main .main-content .invoices .invoice .status .circle {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+main .main-content .invoices .invoice .status span {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+main .main-content .invoices .invoice .status.paid {
+  background-color: #212B3F;
+}
+
+main .main-content .invoices .invoice .status.paid .circle {
+  background-color: #33D69F;
+}
+
+main .main-content .invoices .invoice .status.paid span {
+  color: #33D69F;
+}
+
+main .main-content .invoices .invoice .status.pending {
+  background-color: #ff8f000d;
+}
+
+main .main-content .invoices .invoice .status.pending .circle {
+  background-color: #ff8f00;
+}
+
+main .main-content .invoices .invoice .status.pending span {
+  color: #ff8f00;
+}
+
+main .main-content .invoices .invoice .status.draft {
+  background-color: #dfe3fa0f;
+}
+
+main .main-content .invoices .invoice .status.draft .circle {
+  background-color: #fff;
+}
+
+main .main-content .invoices .invoice .status.draft span {
+  color: #fff;
+}
+
+main .main-content .invoices .invoice:hover {
+  border: 1px solid #7c5dfa;
 }
 
 main .create-new-invoice {
