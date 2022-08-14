@@ -11,6 +11,7 @@ body {
     height: 100vh;
     color: #fff;
     font-family: Spartan, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: $clr-dark-background;
 }
 
 header {
@@ -120,6 +121,65 @@ main {
                     align-items: center;
                     gap: 12px;
                     cursor: pointer;
+                    position: relative;
+                    user-select: none;
+
+                    .options-dropdown {
+                        position: absolute;
+                        background-color: $clr-primary;
+                        padding: 24px;
+                        top: 130%;
+                        right: 0;
+                        border-radius: 5px;
+                        display: none;
+
+                        .option {
+                            cursor: pointer;
+                            width: 110px;
+
+                            .checkbox {
+                                width: 16px;
+                                height: 16px;
+                                border-radius: 2px;
+                                background-color: $clr-dark-background;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                transition: all 0.1s ease;
+
+                                svg {
+                                    display: none;
+
+                                    &.show {
+                                        display: block;
+                                    }
+                                }
+                                &.active{
+                                    background-color: $clr-purple;
+                                }
+                            }
+
+                            &:not(:last-child) {
+                                margin-bottom: 10px;
+                            }
+
+                            display: flex;
+                            gap: 12px;
+
+
+                            &:hover {
+                                color: $clr-purple;
+
+                                .checkbox {
+                                    border: 1px solid $clr-purple;
+                                }
+                            }
+                        }
+
+                        &.show {
+                            display: block;
+                        }
+                    }
 
                     span {
                         font-size: 0.85rem;
@@ -155,6 +215,7 @@ main {
 
         .no-invoice-message {
             margin-top: 70px;
+            height: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -264,7 +325,7 @@ main {
                 }
             }
 
-            
+
 
             .select-term {
                 position: relative;
@@ -318,6 +379,11 @@ main {
                         font-size: .9rem;
                         padding: 16px 16px;
                         cursor: pointer;
+                        transition: 0.1s;
+
+                        &:hover {
+                            color: $clr-purple;
+                        }
                     }
 
                     &.show {

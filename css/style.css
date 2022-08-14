@@ -137,6 +137,7 @@ body {
   height: 100vh;
   color: #fff;
   font-family: Spartan, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #141625;
 }
 
 header {
@@ -293,6 +294,76 @@ main .main-content .main-caption .tools .filter-status {
           align-items: center;
   gap: 12px;
   cursor: pointer;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+main .main-content .main-caption .tools .filter-status .options-dropdown {
+  position: absolute;
+  background-color: #252945;
+  padding: 24px;
+  top: 130%;
+  right: 0;
+  border-radius: 5px;
+  display: none;
+}
+
+main .main-content .main-caption .tools .filter-status .options-dropdown .option {
+  cursor: pointer;
+  width: 110px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 12px;
+}
+
+main .main-content .main-caption .tools .filter-status .options-dropdown .option .checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  background-color: #141625;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+main .main-content .main-caption .tools .filter-status .options-dropdown .option .checkbox svg {
+  display: none;
+}
+
+main .main-content .main-caption .tools .filter-status .options-dropdown .option .checkbox svg.show {
+  display: block;
+}
+
+main .main-content .main-caption .tools .filter-status .options-dropdown .option .checkbox.active {
+  background-color: #7c5dfa;
+}
+
+main .main-content .main-caption .tools .filter-status .options-dropdown .option:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+main .main-content .main-caption .tools .filter-status .options-dropdown .option:hover {
+  color: #7c5dfa;
+}
+
+main .main-content .main-caption .tools .filter-status .options-dropdown .option:hover .checkbox {
+  border: 1px solid #7c5dfa;
+}
+
+main .main-content .main-caption .tools .filter-status .options-dropdown.show {
+  display: block;
 }
 
 main .main-content .main-caption .tools .filter-status span {
@@ -336,6 +407,7 @@ main .main-content .main-caption .tools .new-invoice-btn span {
 
 main .main-content .no-invoice-message {
   margin-top: 70px;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -529,6 +601,12 @@ main .create-new-invoice .new-invoice-form .select-term .options-dropdwon .optio
   font-size: .9rem;
   padding: 16px 16px;
   cursor: pointer;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+main .create-new-invoice .new-invoice-form .select-term .options-dropdwon .option:hover {
+  color: #7c5dfa;
 }
 
 main .create-new-invoice .new-invoice-form .select-term .options-dropdwon.show {

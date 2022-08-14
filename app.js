@@ -21,7 +21,6 @@ $(function () {
 });
 ///
 
-
 //open new invoice area
 const newInvoiceBtn = document.querySelector('.new-invoice-btn')
 const main = document.querySelector('main')
@@ -60,8 +59,8 @@ selectTerm.addEventListener("click", function (e) {
         termOptions[i].addEventListener("click", function () {
             termCurrent.innerText = this.innerText
         })
-
     }
+
     document.addEventListener('click', (e) => {
         const clickedArea = e.composedPath();
         if (!clickedArea.includes(selectTerm)) {
@@ -72,9 +71,39 @@ selectTerm.addEventListener("click", function (e) {
 })
 
 
+const statusFilter = document.querySelector('.filter-status')
+console.log(statusFilter);
+const filterDropdown = statusFilter.querySelector('.options-dropdown')
+const statusOptions = filterDropdown.querySelectorAll('.option')
+console.log(filterDropdown);
+statusFilter.addEventListener('click', function (params) {
+    filterDropdown.classList.add('show')
+
+    for (let i = 0; i < statusOptions.length; i++) {
+        statusOptions[i].addEventListener('click',function(params) {
+            statusOptions[i].querySelector("svg").classList.toggle("show")
+            statusOptions[i].querySelector('.checkbox').classList.toggle('active')
+        })
+        
+    }
+    document.addEventListener('click', (e) => {
+        const clickedArea = e.composedPath()
+        console.log(clickedArea)
+        if (!clickedArea.includes(statusFilter)) {
+            filterDropdown.classList.toggle('show')
+        }
+    })
+})
+
 const datePicker = document.querySelector('.date-picker')
 const dateInput = datePicker.querySelector('.input.result')
 const calendar = datePicker.querySelector('.calendar')
-dateInput.addEventListener('click',function (params) {
+dateInput.addEventListener('click', function (params) {
     calendar.classList.toggle('show')
+    document.addEventListener('click', (e) => {
+        const clickedArea = e.composedPath();
+        if (!clickedArea.includes(datePicker)) {
+            calendar.classList.remove('show')
+        }
+    })
 })
