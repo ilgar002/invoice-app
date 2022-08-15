@@ -644,6 +644,7 @@ main .create-new-invoice .new-invoice-form .description {
 main .create-new-invoice .new-invoice-form .description small.empty-alert {
   color: #ec5757;
   font-weight: 500;
+  display: none;
 }
 
 main .create-new-invoice .new-invoice-form input {

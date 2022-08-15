@@ -17,6 +17,7 @@ $(function () {
             $selected = $me.val(),
             $parent = $me.parents('.date-picker');
         $parent.find('.result').children('span').html($selected);
+        calendar.classList.remove('show')
     });
 });
 ///
