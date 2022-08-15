@@ -174,40 +174,60 @@
             <h1 class="title">New Invoice</h1>
             <div class="new-invoice-form">
                 <span class="direction">Bill From</span>
-                <label class="description">Street Address</label>
+                <label class="description">Street Address
+                    <small class="empty-alert">can't be empty</small>
+                </label>
                 <input type="text">
                 <div class="xl-input-container">
                     <div class="xs-input-container">
-                        <label class="description">City</label>
+                        <label class="description">City
+                            <small class="empty-alert">can't be empty</small>
+                        </label>
                         <input type="text">
                     </div>
                     <div class="xs-input-container">
-                        <label class="description">PostCode</label>
+                        <label class="description">PostCode
+                            <small class="empty-alert">can't be empty</small>
+                        </label>
                         <input type="text">
                     </div>
                     <div class="xs-input-container">
-                        <label class="description">Country</label>
+                        <label class="description">Country
+                            <small class="empty-alert">can't be empty</small>
+                        </label>
                         <input type="text">
                     </div>
                 </div>
                 <span class="direction">Bill To</span>
-                <label class="description">Client's Name</label>
+                <label class="description">Client's Name
+                    <small class="empty-alert">can't be empty</small>
+                </label>
                 <input type="text">
-                <label class="description">Client's Email</label>
+                <label class="description">Client's Email
+                    <small class="empty-alert">can't be empty</small>
+                </label>
                 <input type="text">
-                <label class="description">Street Address</label>
+                <label class="description">Street Address
+                    <small class="empty-alert">can't be empty</small>
+                </label>
                 <input type="text">
                 <div class="xl-input-container">
                     <div class="xs-input-container">
-                        <label class="description">City</label>
+                        <label class="description">City
+                            <small class="empty-alert">can't be empty</small>
+                        </label>
                         <input type="text">
                     </div>
                     <div class="xs-input-container">
-                        <label class="description">PostCode</label>
+                        <label class="description">PostCode
+                            <small class="empty-alert">can't be empty</small>
+                        </label>
                         <input type="text">
                     </div>
                     <div class="xs-input-container">
-                        <label class="description">Country</label>
+                        <label class="description">Country
+                            <small class="empty-alert">can't be empty</small>
+                        </label>
                         <input type="text">
                     </div>
                 </div>
@@ -230,12 +250,45 @@
                         <div class="option">Net 30 days</div>
                     </div>
                 </div>
-                <label class="description">Project Description</label>
+                <label class="description">Project Description
+                    <small class="empty-alert">can't be empty</small>
+                </label>
                 <input type="text">
                 <div class="items">
                     <span class="item-title">Item List</span>
                     <div class="item">
                         <div class="col">
+                            <label class="description">Item Name
+                                <small class="empty-alert">can't be empty</small>
+                            </label>
+                            <input type="text">
+                        </div>
+                        <div class="col">
+                            <label class="description">Qty.
+                                <small class="empty-alert">can't be empty</small>
+                            </label>
+                            <input type="text" value="1">
+                        </div>
+                        <div class="col">
+                            <label class="description">Price
+                                <small class="empty-alert">can't be empty</small>
+                            </label>
+                            <input type="text">
+                        </div>
+                        <div class="col">
+                            <label class="description">Total</label>
+                            <span class="total">0.00</span>
+                        </div>
+                        <button class="delete-item">
+                            <svg width="13" height="16" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.583 3.556v10.666c0 .982-.795 1.778-1.777 1.778H2.694a1.777 1.777 0 01-1.777-1.778V3.556h10.666zM8.473 0l.888.889h3.111v1.778H.028V.889h3.11L4.029 0h4.444z"
+                                    fill-rule="nonzero"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- <div class="item">
+                        <div class="col">
                             <label class="description">Item Name</label>
                             <input type="text">
                         </div>
@@ -258,40 +311,15 @@
                                     fill-rule="nonzero"></path>
                             </svg>
                         </button>
-                    </div>
-                    <div class="item">
-                        <div class="col">
-                            <label class="description">Item Name</label>
-                            <input type="text">
-                        </div>
-                        <div class="col">
-                            <label class="description">Qty.</label>
-                            <input type="text">
-                        </div>
-                        <div class="col">
-                            <label class="description">Price</label>
-                            <input type="text">
-                        </div>
-                        <div class="col">
-                            <label class="description">Total</label>
-                            <span class="total">0.00</span>
-                        </div>
-                        <button class="delete-item">
-                            <svg width="13" height="16" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M11.583 3.556v10.666c0 .982-.795 1.778-1.777 1.778H2.694a1.777 1.777 0 01-1.777-1.778V3.556h10.666zM8.473 0l.888.889h3.111v1.778H.028V.889h3.11L4.029 0h4.444z"
-                                    fill-rule="nonzero"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <button class="add-item">
-                        <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.313 10.023v-3.71h3.71v-2.58h-3.71V.023h-2.58v3.71H.023v2.58h3.71v3.71z"
-                                fill-rule="nonzero"></path>
-                        </svg>
-                        Add New Item
-                    </button>
+                    </div> -->
                 </div>
+                <button class="add-item">
+                    <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.313 10.023v-3.71h3.71v-2.58h-3.71V.023h-2.58v3.71H.023v2.58h3.71v3.71z"
+                            fill-rule="nonzero"></path>
+                    </svg>
+                    Add New Item
+                </button>
                 <div class="buttons">
                     <button class="discard">
                         Discard

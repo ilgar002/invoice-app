@@ -228,8 +228,8 @@ header .theme-profile .profile-photo {
 }
 
 header .theme-profile .profile-photo img {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -630,6 +630,20 @@ main .create-new-invoice .new-invoice-form .direction {
 main .create-new-invoice .new-invoice-form .description {
   font-size: .85rem;
   letter-spacing: -.25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .create-new-invoice .new-invoice-form .description small.empty-alert {
+  color: #ec5757;
+  font-weight: 500;
 }
 
 main .create-new-invoice .new-invoice-form input {
@@ -861,7 +875,7 @@ main .create-new-invoice .new-invoice-form .items .item .delete-item svg {
   fill: #7e88c3;
 }
 
-main .create-new-invoice .new-invoice-form .items .add-item {
+main .create-new-invoice .new-invoice-form .add-item {
   height: 48px;
   background-color: #1e2139;
   border: none;
@@ -883,7 +897,7 @@ main .create-new-invoice .new-invoice-form .items .add-item {
   margin-bottom: 40px;
 }
 
-main .create-new-invoice .new-invoice-form .items .add-item svg {
+main .create-new-invoice .new-invoice-form .add-item svg {
   fill: #fff;
 }
 

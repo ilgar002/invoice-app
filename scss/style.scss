@@ -253,6 +253,7 @@ main {
             display: flex;
             flex-direction: column;
             gap: 16px;
+
             .invoice {
                 background-color: #1F2139;
                 border: 1px solid #1F2139;
@@ -265,6 +266,7 @@ main {
                 align-items: center;
                 cursor: pointer;
                 transition: all .2s ease;
+
                 .id {
                     font-weight: 700;
                     font-size: 0.9rem;
@@ -318,6 +320,7 @@ main {
 
                     &.paid {
                         background-color: #212B3F;
+
                         .circle {
                             background-color: #33D69F;
                         }
@@ -326,21 +329,27 @@ main {
                             color: #33D69F;
                         }
                     }
-                    &.pending{
+
+                    &.pending {
                         background-color: #ff8f000d;
-                        .circle{
+
+                        .circle {
                             background-color: #ff8f00;
                         }
-                        span{
+
+                        span {
                             color: #ff8f00;
                         }
                     }
-                    &.draft{
+
+                    &.draft {
                         background-color: #dfe3fa0f;
-                        .circle{
+
+                        .circle {
                             background-color: #fff;
                         }
-                        span{
+
+                        span {
                             color: #fff;
                         }
                     }
@@ -386,6 +395,14 @@ main {
             .description {
                 font-size: .85rem;
                 letter-spacing: -.25px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                small.empty-alert{
+                    color: #ec5757;
+                    font-weight: 500;
+                    display: none;
+                }
             }
 
             input {
@@ -432,8 +449,6 @@ main {
                     fill: #7E88C3;
                 }
             }
-
-
 
             .select-term {
                 position: relative;
@@ -569,24 +584,26 @@ main {
 
                 }
 
-                .add-item {
-                    height: 48px;
-                    background-color: #1e2139;
-                    border: none;
-                    color: #fff;
-                    border-radius: 10px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 8px;
-                    font-weight: 700;
-                    font-size: 1rem;
-                    cursor: pointer;
-                    margin-bottom: 40px;
 
-                    svg {
-                        fill: #fff;
-                    }
+            }
+
+            .add-item {
+                height: 48px;
+                background-color: #1e2139;
+                border: none;
+                color: #fff;
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+                font-weight: 700;
+                font-size: 1rem;
+                cursor: pointer;
+                margin-bottom: 40px;
+
+                svg {
+                    fill: #fff;
                 }
             }
 
