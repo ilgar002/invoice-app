@@ -172,68 +172,69 @@
         </div>
         <div class="create-new-invoice">
             <h1 class="title">New Invoice</h1>
-            <div class="new-invoice-form">
+            <form class="new-invoice-form">
                 <span class="direction">Bill From</span>
                 <label class="description">Street Address
-                    <small class="empty-alert">can't be empty</small>
+                    <small class="empty-alert alert">can't be empty</small>
                 </label>
                 <input type="text">
                 <div class="xl-input-container">
                     <div class="xs-input-container">
                         <label class="description">City
-                            <small class="empty-alert">can't be empty</small>
+                            <small class="empty-alert alert">can't be empty</small>
                         </label>
                         <input type="text">
                     </div>
                     <div class="xs-input-container">
                         <label class="description">PostCode
-                            <small class="empty-alert">can't be empty</small>
+                            <small class="empty-alert alert">can't be empty</small>
                         </label>
                         <input type="text">
                     </div>
                     <div class="xs-input-container">
                         <label class="description">Country
-                            <small class="empty-alert">can't be empty</small>
+                            <small class="empty-alert alert">can't be empty</small>
                         </label>
                         <input type="text">
                     </div>
                 </div>
                 <span class="direction">Bill To</span>
                 <label class="description">Client's Name
-                    <small class="empty-alert">can't be empty</small>
+                    <small class="empty-alert alert alert">can't be empty</small>
                 </label>
                 <input type="text">
                 <label class="description">Client's Email
-                    <small class="empty-alert">can't be empty</small>
+                    <small class="empty-alert alert">can't be empty</small>
+                    <small class="invalid-email alert">invalid email</small>
                 </label>
-                <input type="text">
+                <input type="text" class="email-input">
                 <label class="description">Street Address
-                    <small class="empty-alert">can't be empty</small>
+                    <small class="empty-alert alert">can't be empty</small>
                 </label>
                 <input type="text">
                 <div class="xl-input-container">
                     <div class="xs-input-container">
                         <label class="description">City
-                            <small class="empty-alert">can't be empty</small>
+                            <small class="empty-alert alert">can't be empty</small>
                         </label>
                         <input type="text">
                     </div>
                     <div class="xs-input-container">
                         <label class="description">PostCode
-                            <small class="empty-alert">can't be empty</small>
+                            <small class="empty-alert alert">can't be empty</small>
                         </label>
                         <input type="text">
                     </div>
                     <div class="xs-input-container">
                         <label class="description">Country
-                            <small class="empty-alert">can't be empty</small>
+                            <small class="empty-alert alert">can't be empty</small>
                         </label>
                         <input type="text">
                     </div>
                 </div>
                 <label class="description">Invoice Date</label>
                 <div class="date-picker">
-                    <div class="input result"><span>19 Aug 2022</span></div>
+                    <div class="input result"><span class="today">19 Aug 2022</span></div>
                     <div class="calendar"></div>
                 </div>
                 <label class="description">Payment Terms</label>
@@ -251,7 +252,7 @@
                     </div>
                 </div>
                 <label class="description">Project Description
-                    <small class="empty-alert">can't be empty</small>
+                    <small class="empty-alert alert">can't be empty</small>
                 </label>
                 <input type="text">
                 <div class="items">
@@ -259,19 +260,19 @@
                     <div class="item">
                         <div class="col">
                             <label class="description">Item Name
-                                <small class="empty-alert">can't be empty</small>
+                                <small class="empty-alert alert">can't be empty</small>
                             </label>
                             <input type="text">
                         </div>
                         <div class="col">
                             <label class="description">Qty.
-                                <small class="empty-alert">can't be empty</small>
+                                <small class="empty-alert alert">can't be empty</small>
                             </label>
                             <input type="text" value="1">
                         </div>
                         <div class="col">
                             <label class="description">Price
-                                <small class="empty-alert">can't be empty</small>
+                                <small class="empty-alert alert">can't be empty</small>
                             </label>
                             <input type="text">
                         </div>
@@ -279,7 +280,7 @@
                             <label class="description">Total</label>
                             <span class="total">0.00</span>
                         </div>
-                        <button class="delete-item">
+                        <button class="delete-item" type="button">
                             <svg width="13" height="16" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M11.583 3.556v10.666c0 .982-.795 1.778-1.777 1.778H2.694a1.777 1.777 0 01-1.777-1.778V3.556h10.666zM8.473 0l.888.889h3.111v1.778H.028V.889h3.11L4.029 0h4.444z"
@@ -288,7 +289,7 @@
                         </button>
                     </div>
                 </div>
-                <button class="add-item">
+                <button class="add-item" type="button">
                     <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.313 10.023v-3.71h3.71v-2.58h-3.71V.023h-2.58v3.71H.023v2.58h3.71v3.71z"
                             fill-rule="nonzero"></path>
@@ -296,19 +297,19 @@
                     Add New Item
                 </button>
                 <div class="buttons">
-                    <button class="discard">
+                    <button class="discard" type="reset">
                         Discard
                     </button>
                     <div class="btn-container">
                         <button class="draft">
                             Save as Draft
                         </button>
-                        <button class="save">
+                        <button class="save" type="submit">
                             Save & Send
                         </button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         <div class="filter-layout"></div>
     </main>

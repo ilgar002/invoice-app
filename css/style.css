@@ -641,7 +641,7 @@ main .create-new-invoice .new-invoice-form .description {
           align-items: center;
 }
 
-main .create-new-invoice .new-invoice-form .description small.empty-alert {
+main .create-new-invoice .new-invoice-form .description small.alert {
   color: #ec5757;
   font-weight: 500;
   display: none;
