@@ -202,7 +202,7 @@
                 <label class="description">Client's Name
                     <small class="empty-alert alert alert">can't be empty</small>
                 </label>
-                <input type="text">
+                <input class="client-name" type="text">
                 <label class="description">Client's Email
                     <small class="empty-alert alert">can't be empty</small>
                     <small class="invalid-email alert">invalid email</small>
@@ -267,14 +267,16 @@
                         <div class="col">
                             <label class="description">Qty.
                                 <small class="empty-alert alert">can't be empty</small>
+                                <small class="number-alert alert">invalid value</small>
                             </label>
-                            <input type="text" value="1">
+                            <input type="text" value="1" class="quantity">
                         </div>
                         <div class="col">
                             <label class="description">Price
                                 <small class="empty-alert alert">can't be empty</small>
+                                <small class="number-alert alert">invalid value</small>
                             </label>
-                            <input type="text">
+                            <input type="text" class="price">
                         </div>
                         <div class="col">
                             <label class="description">Total</label>
@@ -301,7 +303,7 @@
                         Discard
                     </button>
                     <div class="btn-container">
-                        <button class="draft">
+                        <button class="draft" type="button">
                             Save as Draft
                         </button>
                         <button class="save" type="submit">

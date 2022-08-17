@@ -106,7 +106,8 @@ const items = document.querySelector('.items')
 addItem.addEventListener('click', () => {
     const item = document.createElement('div')
     item.classList.add('item')
-    item.innerHTML = `<div class="col">
+    item.innerHTML = `<div class="item">
+                        <div class="col">
                             <label class="description">Item Name
                                 <small class="empty-alert alert">can't be empty</small>
                             </label>
@@ -115,14 +116,16 @@ addItem.addEventListener('click', () => {
                         <div class="col">
                             <label class="description">Qty.
                                 <small class="empty-alert alert">can't be empty</small>
+                                <small class="number-alert alert">invalid value</small>
                             </label>
-                            <input type="text" value="1">
+                            <input type="text" value="1" class="quantity">
                         </div>
                         <div class="col">
                             <label class="description">Price
                                 <small class="empty-alert alert">can't be empty</small>
+                                <small class="number-alert alert">invalid value</small>
                             </label>
-                            <input type="text">
+                            <input type="text" class="price">
                         </div>
                         <div class="col">
                             <label class="description">Total</label>
@@ -134,7 +137,8 @@ addItem.addEventListener('click', () => {
                                     d="M11.583 3.556v10.666c0 .982-.795 1.778-1.777 1.778H2.694a1.777 1.777 0 01-1.777-1.778V3.556h10.666zM8.473 0l.888.889h3.111v1.778H.028V.889h3.11L4.029 0h4.444z"
                                     fill-rule="nonzero"></path>
                             </svg>
-                        </button>`
+                        </button>
+                    </div>`
     items.append(item)
     deleteItem()
     itemPrice(item)
@@ -170,17 +174,86 @@ function itemPrice(item) {
 function countItemTotal(qnt, price, total) {
     qnt.addEventListener('input', () => {
         total.innerText = `${qnt.value * price.value}`
+        if (!validateItem()) {
+            total.innerText = "Sorry"
+        }
     })
     price.addEventListener('input', () => {
         total.innerText = `${qnt.value * price.value}`
+        if (!validateItem()) {
+            total.innerText = "Sorry"
+        }
     })
+}
+
+
+
+//id generator
+function idGenerator() {
+    let string = '';
+    let characters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+    for (var i = 0; i < 2; i++) {
+        string += characters.charAt(Math.floor(Math.random() *
+            characters.length));
+    }
+    let number = Math.floor(Math.random() * (9999 - 1000 + 1) + 1000)
+    let result = string + number
+    return result
+}
+
+
+//create invoice
+const invoices = document.querySelector('.invoices')
+function createInvoice(date, clientName, totalAmount, status) {
+    const newInvoice = document.createElement('div')
+    newInvoice.classList.add(".invoice")
+    newInvoice.innerHTML = `<div class="invoice">
+                    <span class="id">
+                        <span class="hashtag">
+                            #
+                        </span>
+                        ${idGenerator()}
+                    </span>
+                    <span class="date">
+                        Due ${date}
+                    </span>
+                    <span class="client-name">
+                        ${clientName}
+                    </span>
+                    <span class="amount">
+                        $${totalAmount}
+                    </span>
+                    <span class="status ${status}">
+                        <span class="circle"></span>
+                        <span>${status.charAt(0).toUpperCase() + status.slice(1)}</span>
+                    </span>
+                </div>`
+    invoices.append(newInvoice)
 }
 
 const newInvoiceForm = document.querySelector('.new-invoice-form')
 newInvoiceForm.addEventListener('submit', function (e) {
     e.preventDefault()
+    validateInput()
+    validateEmail()
+    validateItem()
+    if (validateInput() == true && validateEmail() == true && validateItem() == true) {
+        let date = newInvoiceForm.querySelector('.today').innerText
+        let clientName = newInvoiceForm.querySelector('.client-name').value
+        let amounts = document.querySelectorAll('.total')
+        let totalAmount = 0
+        for (let i = 0; i < amounts.length; i++) {
+            totalAmount += Number(amounts[i].innerText)
+        }
+        createInvoice(date, clientName, totalAmount, "pending")
+    }
+})
+
+
+
+function validateInput() {
     const invoiceFormInputs = newInvoiceForm.querySelectorAll('input')
-    const emailInput = newInvoiceForm.querySelector('.email-input')
+    let status = 0
     for (let i = 0; i < invoiceFormInputs.length; i++) {
         if (invoiceFormInputs[i].value != "") {
             const alert = invoiceFormInputs[i].previousElementSibling.querySelector('.empty-alert')
@@ -189,26 +262,81 @@ newInvoiceForm.addEventListener('submit', function (e) {
         else if (invoiceFormInputs[i].value == "") {
             const alert = invoiceFormInputs[i].previousElementSibling.querySelector('.empty-alert')
             alert.style.display = "block"
+            status++
         }
     }
-    ValidateEmail(emailInput)
-})
-
-function ValidateEmail(input) {
-    const mailformat = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if (input.value.match(mailformat)) {
-        input.previousElementSibling.querySelector('.invalid-email').style.display = "none"
+    if (status > 0) {
+        console.log("empty-false");
+        return false
     }
-    else {
-        if (input.value == "") {
-            input.previousElementSibling.querySelector('.empty-alert').style.display = "block"
-            input.previousElementSibling.querySelector('.invalid-email').style.display = "none"
-        }
-        else {
-            input.previousElementSibling.querySelector('.invalid-email').style.display = "block"
-        }
+    else if (status == 0) {
+        console.log("emtpy-true");
+        return true
     }
 }
+function validateEmail() {
+    const emailInput = newInvoiceForm.querySelector('.email-input')
+    const mailformat = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (emailInput.value.match(mailformat)) {
+        emailInput.previousElementSibling.querySelector('.invalid-email').style.display = "none"
+        console.log("email-true");
+        return true
+    }
+    else {
+        if (emailInput.value == "") {
+            emailInput.previousElementSibling.querySelector('.empty-alert').style.display = "block"
+            emailInput.previousElementSibling.querySelector('.invalid-email').style.display = "none"
+        }
+        else {
+            emailInput.previousElementSibling.querySelector('.invalid-email').style.display = "block"
+        }
+        console.log("email-false");
+        return false
+    }
+}
+function validateItem() {
+    const quantity = newInvoiceForm.querySelectorAll('.quantity')
+    const price = newInvoiceForm.querySelectorAll('.price')
+    let status = 0
+    for (let i = 0; i < quantity.length; i++) {
+        if (quantity[i].value != "") {
+            if (!(quantity[i].value > 0 && quantity[i].value % 1 == 0)) {
+                quantity[i].previousElementSibling.querySelector(".number-alert").style.display = "block"
+                status++
+            }
+            else {
+                quantity[i].previousElementSibling.querySelector(".number-alert").style.display = "none"
+            }
+        }
+        else {
+            quantity[i].previousElementSibling.querySelector(".number-alert").style.display = "none"
+        }
+    }
+    for (let j = 0; j < price.length; j++) {
+        if (price[j].value != "") {
+            if (!(price[j].value > 0)) {
+                price[j].previousElementSibling.querySelector(".number-alert").style.display = "block"
+                status++
+            }
+            else {
+                price[j].previousElementSibling.querySelector(".number-alert").style.display = "none"
+            }
+        }
+        else {
+            price[j].previousElementSibling.querySelector(".number-alert").style.display = "none"
+        }
+    }
+    if (status > 0) {
+        console.log("item-false");
+        return false
+    }
+    else if (status == 0) {
+        console.log("item-true");
+        return true
+    }
+}
+
+
 
 //invoice form discard button
 const discardBtn = newInvoiceForm.querySelector('.discard')
@@ -235,53 +363,4 @@ function today() {
     todayInput.innerText = today
 }
 
-
-
-
-function idGenerator() {
-    let string = '';
-    let characters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-    for (var i = 0; i < 2; i++) {
-        string += characters.charAt(Math.floor(Math.random() *
-            characters.length));
-    }
-    let number = Math.floor(Math.random() * (9999 - 1000 + 1) + 1000)
-    let result = string + number
-    return result
-}
-
-
-
-//save&send Invoice
-// const saveInfoiceBtn=newInvoiceForm.querySelector('button.save')
-
-//create invoice
-const invoices = document.querySelector('.invoices')
-console.log(invoices);
-function createInvoice(date, clientName, totalAmount, status) {
-    const newInvoice = document.createElement('div')
-    newInvoice.classList.add(".invoice")
-    newInvoice.innerHTML = `<div class="invoice">
-                    <span class="id">
-                        <span class="hashtag">
-                            #
-                        </span>
-                        ${idGenerator()}
-                    </span>
-                    <span class="date">
-                        Due ${date}
-                    </span>
-                    <span class="client-name">
-                        ${clientName}
-                    </span>
-                    <span class="amount">
-                        $${totalAmount}
-                    </span>
-                    <span class="status ${status}">
-                        <span class="circle"></span>
-                        <span>${status}</span>
-                    </span>
-                </div>`
-    invoices.append(newInvoice)
-}
 
