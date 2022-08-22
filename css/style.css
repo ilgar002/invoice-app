@@ -134,7 +134,7 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   color: #fff;
   font-family: Spartan, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #141625;
@@ -242,10 +242,12 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  min-height: 100vh;
+  position: relative;
 }
 
 main .main-content {
-  width: 58%;
+  min-width: 60%;
 }
 
 main .main-content .main-caption {
@@ -589,6 +591,372 @@ main .main-content .invoices .invoice:hover {
   border: 1px solid #7c5dfa;
 }
 
+main .main-content .status {
+  height: 40px;
+  max-width: 110px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 8px;
+  gap: 8px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0 24px;
+}
+
+main .main-content .status .circle {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+main .main-content .status span {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+main .main-content .status.paid {
+  background-color: #212B3F;
+}
+
+main .main-content .status.paid .circle {
+  background-color: #33D69F;
+}
+
+main .main-content .status.paid span {
+  color: #33D69F;
+}
+
+main .main-content .status.pending {
+  background-color: #ff8f000d;
+}
+
+main .main-content .status.pending .circle {
+  background-color: #ff8f00;
+}
+
+main .main-content .status.pending span {
+  color: #ff8f00;
+}
+
+main .main-content .status.draft {
+  background-color: #dfe3fa0f;
+}
+
+main .main-content .status.draft .circle {
+  background-color: #fff;
+}
+
+main .main-content .status.draft span {
+  color: #fff;
+}
+
+main .main-content .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .main-content .details .go-back {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 16px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+main .main-content .details .caption {
+  margin-top: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #1e2139;
+  padding: 32px;
+  border-radius: 12px;
+}
+
+main .main-content .details .caption .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .main-content .details .caption .container.left {
+  gap: 32px;
+}
+
+main .main-content .details .caption .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+}
+
+main .main-content .details .caption .buttons button {
+  border: none;
+  color: #fff;
+  padding: 0 24px;
+  border-radius: 24px;
+  height: 48px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: .25px;
+  cursor: pointer;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+main .main-content .details .caption .buttons button.edit {
+  background-color: #252945;
+}
+
+main .main-content .details .caption .buttons button.edit:hover {
+  color: #252945;
+  background-color: #fff;
+}
+
+main .main-content .details .caption .buttons button.delete {
+  background-color: #ec5757;
+}
+
+main .main-content .details .caption .buttons button.delete:hover {
+  color: #ec5757;
+  background-color: #fff;
+}
+
+main .main-content .details .caption .buttons button.pay {
+  background-color: #7c5dfa;
+}
+
+main .main-content .details .caption .buttons button.pay:hover {
+  color: #7c5dfa;
+  background-color: #fff;
+}
+
+main .main-content .details .details-data {
+  background-color: #1e2139;
+  padding: 32px;
+  border-radius: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 40px;
+}
+
+main .main-content .details .details-data .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main .main-content .details .details-data .row .xs-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 4px;
+}
+
+main .main-content .details .details-data .row .xs-container .id {
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+main .main-content .details .details-data .row .xs-container .id .hashtag {
+  color: #7e88c3;
+}
+
+main .main-content .details .details-data .row .xs-container .p-decription {
+  font-size: .85rem;
+}
+
+main .main-content .details .details-data .row .xs-container .name {
+  margin: 10px 0;
+}
+
+main .main-content .details .details-data .row .xs-container .email {
+  margin: 10px 0;
+}
+
+main .main-content .details .details-data .row .small {
+  font-size: .85rem;
+  line-height: 1.125rem;
+}
+
+main .main-content .details .details-data .row .bold {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+main .main-content .details .details-data .row .s-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main .main-content .details .details-data .row .s-container .invoice-date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: .9rem;
+  font-weight: 400;
+  gap: 10px;
+}
+
+main .main-content .details .details-data .row .s-container .invoice-date span {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+main .main-content .details .details-data .row .s-container .payment-due {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: .9rem;
+  font-weight: 400;
+  gap: 10px;
+}
+
+main .main-content .details .details-data .row .s-container .payment-due span {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+main .main-content .details .details-data .items-data {
+  padding-top: 32px;
+  border-radius: 12px;
+  background-color: #252945;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 30px;
+}
+
+main .main-content .details .details-data .items-data .item-caption {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 32px;
+}
+
+main .main-content .details .details-data .items-data .item-caption span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-weight: 300;
+  font-size: .85rem;
+}
+
+main .main-content .details .details-data .items-data .item-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 32px;
+}
+
+main .main-content .details .details-data .items-data .item-row span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+main .main-content .details .details-data .items-data .amount-due {
+  padding: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #0C0E16;
+  color: #fff;
+  border-radius: 0 0 12px 12px;
+  font-size: .9rem;
+  font-weight: 300;
+}
+
+main .main-content .details .details-data .items-data .amount-due .total {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
 main .create-new-invoice {
   width: 720px;
   height: 100vh;
@@ -597,7 +965,7 @@ main .create-new-invoice {
   background-color: #141625;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  position: absolute;
+  position: fixed;
   z-index: 4;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
@@ -938,7 +1306,7 @@ main .create-new-invoice .new-invoice-form .buttons .save {
 main .filter-layout {
   opacity: 0;
   position: absolute;
-  height: 100vh;
+  height: 100%;
   top: 0;
   left: 0;
   width: 100%;
@@ -986,7 +1354,6 @@ main.open-invoice .filter-layout {
     border-top: 0.9px solid #858BB2;
   }
   main {
-    height: 100vh;
     padding-left: 110px;
   }
   main .main-content {
@@ -1027,7 +1394,6 @@ main.open-invoice .filter-layout {
   main {
     padding-top: 72px;
     width: 100%;
-    height: 100vh;
   }
   main .main-content {
     margin-top: 56px;

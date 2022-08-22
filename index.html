@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -56,7 +58,8 @@
                         <svg class="arrow" width="11" height="7" xmlns="http://www.w3.org/2000/svg"
                             style="transform: scaleY(1);">
                             <path d="M1 1l4.228 4.228L9.456 1" stroke="#7C5DFA" stroke-width="2" fill="none"
-                                fill-rule="evenodd"></path>
+                                fill-rule="evenodd">
+                            </path>
                         </svg>
                         <div class="options-dropdown">
                             <span class="option">
@@ -105,7 +108,7 @@
                 <span>Create an invoice by clicking the <strong>New Invoice</strong> button and get started</span>
             </div>
             <div class="invoices">
-                <div class="invoice">
+                <div class="invoice" data-id="RT3080">
                     <span class="id">
                         <span class="hashtag">
                             #
@@ -126,7 +129,7 @@
                         <span>Paid</span>
                     </span>
                 </div>
-                <div class="invoice">
+                <div class="invoice" data-id="XM9141">
                     <span class="id">
                         <span class="hashtag">
                             #
@@ -147,7 +150,7 @@
                         <span>Pending</span>
                     </span>
                 </div>
-                <div class="invoice">
+                <div class="invoice" data-id="FV2353">
                     <span class="id">
                         <span class="hashtag">
                             #
@@ -177,25 +180,25 @@
                 <label class="description">Street Address
                     <small class="empty-alert alert">can't be empty</small>
                 </label>
-                <input type="text">
+                <input type="text" class="from-street">
                 <div class="xl-input-container">
                     <div class="xs-input-container">
                         <label class="description">City
                             <small class="empty-alert alert">can't be empty</small>
                         </label>
-                        <input type="text">
+                        <input type="text" class="from-city">
                     </div>
                     <div class="xs-input-container">
                         <label class="description">PostCode
                             <small class="empty-alert alert">can't be empty</small>
                         </label>
-                        <input type="text">
+                        <input type="text" class="from-postCode">
                     </div>
                     <div class="xs-input-container">
                         <label class="description">Country
                             <small class="empty-alert alert">can't be empty</small>
                         </label>
-                        <input type="text">
+                        <input type="text" class="from-country">
                     </div>
                 </div>
                 <span class="direction">Bill To</span>
@@ -211,25 +214,25 @@
                 <label class="description">Street Address
                     <small class="empty-alert alert">can't be empty</small>
                 </label>
-                <input type="text">
+                <input type="text" class="to-street">
                 <div class="xl-input-container">
                     <div class="xs-input-container">
                         <label class="description">City
                             <small class="empty-alert alert">can't be empty</small>
                         </label>
-                        <input type="text">
+                        <input type="text" class="to-city">
                     </div>
                     <div class="xs-input-container">
                         <label class="description">PostCode
                             <small class="empty-alert alert">can't be empty</small>
                         </label>
-                        <input type="text">
+                        <input type="text" class="to-postCode">
                     </div>
                     <div class="xs-input-container">
                         <label class="description">Country
                             <small class="empty-alert alert">can't be empty</small>
                         </label>
-                        <input type="text">
+                        <input type="text" class="to-country">
                     </div>
                 </div>
                 <label class="description">Invoice Date</label>
@@ -254,7 +257,7 @@
                 <label class="description">Project Description
                     <small class="empty-alert alert">can't be empty</small>
                 </label>
-                <input type="text">
+                <input type="text" class="project-description">
                 <div class="items">
                     <span class="item-title">Item List</span>
                     <div class="item">
@@ -299,7 +302,7 @@
                     Add New Item
                 </button>
                 <div class="buttons">
-                    <button class="discard" type="reset">
+                    <button class="discard" type="button">
                         Discard
                     </button>
                     <div class="btn-container">

@@ -106,8 +106,7 @@ const items = document.querySelector('.items')
 addItem.addEventListener('click', () => {
     const item = document.createElement('div')
     item.classList.add('item')
-    item.innerHTML = `<div class="item">
-                        <div class="col">
+    item.innerHTML = `<div class="col">
                             <label class="description">Item Name
                                 <small class="empty-alert alert">can't be empty</small>
                             </label>
@@ -137,20 +136,24 @@ addItem.addEventListener('click', () => {
                                     d="M11.583 3.556v10.666c0 .982-.795 1.778-1.777 1.778H2.694a1.777 1.777 0 01-1.777-1.778V3.556h10.666zM8.473 0l.888.889h3.111v1.778H.028V.889h3.11L4.029 0h4.444z"
                                     fill-rule="nonzero"></path>
                             </svg>
-                        </button>
-                    </div>`
+                        </button>`
+
+
     items.append(item)
+    deleteItemStatus = true;
     deleteItem()
     itemPrice(item)
 })
 
+
+let deleteItemStatus = true;
 //delete item
 function deleteItem() {
     const deleteItemBtn = items.querySelectorAll('.delete-item')
     let limit = deleteItemBtn.length
     for (let i = 0; i < deleteItemBtn.length; i++) {
         deleteItemBtn[i].addEventListener('click', function () {
-            if (limit > 1) {
+            if (limit > 1 && deleteItemStatus) {
                 this.parentElement.remove()
                 limit--
             }
@@ -173,14 +176,28 @@ function itemPrice(item) {
 }
 function countItemTotal(qnt, price, total) {
     qnt.addEventListener('input', () => {
+        validateItem()
+        if (qnt.value != '') {
+            qnt.parentElement.querySelector('.empty-alert').style.display = 'none'
+        }
+        else {
+            qnt.parentElement.querySelector('.empty-alert').style.display = 'block'
+        }
         total.innerText = `${qnt.value * price.value}`
-        if (!validateItem()) {
+        if (Number(total.innerText) <= 0 || isNaN(total.innerText)) {
             total.innerText = "Sorry"
         }
     })
     price.addEventListener('input', () => {
+        validateItem()
+        if (price.value != '') {
+            price.parentElement.querySelector('.empty-alert').style.display = 'none'
+        }
+        else {
+            price.parentElement.querySelector('.empty-alert').style.display = 'block'
+        }
         total.innerText = `${qnt.value * price.value}`
-        if (!validateItem()) {
+        if (Number(total.innerText) <= 0 || isNaN(total.innerText)) {
             total.innerText = "Sorry"
         }
     })
@@ -204,7 +221,7 @@ function idGenerator() {
 
 //create invoice
 const invoices = document.querySelector('.invoices')
-function createInvoice(date, clientName, totalAmount, status) {
+function createInvoice(id, date, clientName, totalAmount, status) {
     const newInvoice = document.createElement('div')
     newInvoice.classList.add(".invoice")
     newInvoice.innerHTML = `<div class="invoice">
@@ -212,7 +229,7 @@ function createInvoice(date, clientName, totalAmount, status) {
                         <span class="hashtag">
                             #
                         </span>
-                        ${idGenerator()}
+                        ${id}
                     </span>
                     <span class="date">
                         Due ${date}
@@ -245,7 +262,40 @@ newInvoiceForm.addEventListener('submit', function (e) {
         for (let i = 0; i < amounts.length; i++) {
             totalAmount += Number(amounts[i].innerText)
         }
-        createInvoice(date, clientName, totalAmount, "pending")
+        const id = idGenerator()
+        createInvoice(id, date, clientName, totalAmount, "pending")
+        localStorage.setItem("invoice", JSON.stringify({
+            "id": `${id}`,
+            "from": {
+                "street": newInvoiceForm.querySelector('.from-street').value,
+                "city": newInvoiceForm.querySelector('.from-city').value,
+                "postCode": newInvoiceForm.querySelector('.from-postCode').value,
+                "country": newInvoiceForm.querySelector('.from-country').value
+            },
+            "to": {
+                "clientName": newInvoiceForm.querySelector('.client-name').value,
+                "clientEmail": newInvoiceForm.querySelector('.email-input').value,
+                "street": newInvoiceForm.querySelector('.to-street').value,
+                "city": newInvoiceForm.querySelector('.to-city').value,
+                "postCode": newInvoiceForm.querySelector('.to-postCode').value,
+                "country": newInvoiceForm.querySelector('.to-country').value
+            },
+            "invoiceDate": newInvoiceForm.querySelector('.today').innerText,
+            "paymentTerms": newInvoiceForm.querySelector('.current.option').innerText,
+            "description": newInvoiceForm.querySelector('.project-description').value,
+            "items": [
+                {
+                    "name": "Website Redesign",
+                    "quantity": 1,
+                    "price": 14002.33,
+                    "total": 14002.33
+                }
+            ],
+            "status": "pending",
+            "total": totalAmount
+        })
+        )
+        refreshForm()
     }
 })
 
@@ -341,17 +391,13 @@ function validateItem() {
 //invoice form discard button
 const discardBtn = newInvoiceForm.querySelector('.discard')
 discardBtn.addEventListener('click', function () {
-    const allAlerts = newInvoiceForm.querySelectorAll('.alert')
-    for (let i = 0; i < allAlerts.length; i++) {
-        allAlerts[i].style.display = "none"
-    }
-    today()
-    main.classList.remove('open-invoice')
+    refreshForm()
 })
 
-deleteItem()
+// deleteItem()
 itemPrice()
 today()
+
 //today input
 function today() {
     var date = new Date();
@@ -362,5 +408,172 @@ function today() {
     const todayInput = document.querySelector(".date-picker .today")
     todayInput.innerText = today
 }
+
+
+//refresh invoice form
+function refreshForm() {
+    const allInputs = newInvoiceForm.querySelectorAll('input')
+    for (let i = 0; i < allInputs.length; i++) {
+        allInputs[i].value = ""
+    }
+    const allAlerts = newInvoiceForm.querySelectorAll('.alert')
+    for (let i = 0; i < allAlerts.length; i++) {
+        allAlerts[i].style.display = "none"
+    }
+    const items = newInvoiceForm.querySelectorAll('.item')
+    let limit = items.length
+    for (let i = 0; i < items.length; i++) {
+        if (limit > 1) {
+            items[i].remove()
+            limit--
+        }
+    }
+    deleteItemStatus = false
+
+    today()
+    const total = newInvoiceForm.querySelector('.total')
+    newInvoiceForm.querySelector('.select-term .current.option').innerText = 'Net 7 days'
+    total.innerText = '0.00'
+    const quantity = newInvoiceForm.querySelector('.quantity')
+    quantity.value = "1"
+    // main.classList.remove('open-invoice')
+}
+
+
+const mainContent = main.querySelector('.main-content')
+const allInvoice = document.querySelectorAll('.invoice')
+for (let i = 0; i < allInvoice.length; i++) {
+    allInvoice[i].addEventListener('click', function () {
+        const id = this.getAttribute('data-id')
+        window.location.hash = `invoice/${id}`
+        mainContent.innerHTML = 
+            `<div class="details">
+                <button class="go-back">
+                    <img src="./images/icon-arrow-left.svg" alt="icon-arrow">
+                        <span>Go back</span>
+                </button>
+                <div class="caption">
+                    <div class="left container">
+                        <span>Status</span>
+                        <span class="status paid">
+                            <span class="circle"></span>
+                            <span>Paid</span>
+                        </span>
+                    </div>
+                    <div class="buttons right container">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Delete</button>
+                        <button class="pay">Mark as Paid</button>
+                    </div>
+                </div>
+                <div class="details-data">
+                    <div class="row">
+                        <div class="xs-container">
+                            <span class="id">
+                                <span class="hashtag">
+                                    #
+                                </span>
+                                ${id}
+                            </span>
+                            <span class="p-decription">
+                                Re-branding
+                            </span>
+                        </div>
+                        <div class="xs-container">
+                            <span class="small street">
+                                Azerbaijan
+                            </span>
+                            <span class="small city">
+                                Baku
+                            </span>
+                            <span class="small postCode">
+                                1005
+                            </span>
+                            <span class="small country">
+                                Azerbaijan
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="s-container">
+                            <span class="invoice-date">
+                                Invoice Date
+                                <span>
+                                    22 Aug 2022
+                                </span>
+                            </span>
+                            <span class="payment-due">
+                                Payment Due
+                                <span>
+                                    07 Mar 2024
+                                </span>
+                            </span>
+                        </div>
+                        <div class="xs-container">
+                            Bill To
+                            <span class="name bold">
+                                Ilgar Ismayilzada
+                            </span>
+                            <span class="small street">
+                                toAzerbaijan
+                            </span>
+                            <span class="small city">
+                                toBaku
+                            </span>
+                            <span class="small postCode">
+                                to1005
+                            </span>
+                            <span class="small country">
+                                toAzerbaijan
+                            </span>
+                        </div>
+                        <div class="xs-container">
+                            Sent To
+                            <div class="email bold">
+                                ilgar.ismayilzada002@gmail.com
+                            </div>
+                        </div>
+                    </div>
+                    <div class="items-data">
+                        <div class="item-caption">
+                            <span>Item Name</span>
+                            <span>QTY.</span>
+                            <span>Price</span>
+                            <span>Total</span>
+                        </div>
+                        <div class="item-row">
+                            <span class="item-name">Toy</span>
+                            <span class="qty">3</span>
+                            <span class="price">$12.00</span>
+                            <span class="total">$24.00</span>
+                        </div>
+                        <div class="item-row">
+                            <span class="item-name">Ball</span>
+                            <span class="qty">2</span>
+                            <span class="price">$12.00</span>
+                            <span class="total">$24.00</span>
+                        </div>
+                        <div class="item-row">
+                            <span class="item-name">Jocker</span>
+                            <span class="qty">2</span>
+                            <span class="price">$12.00</span>
+                            <span class="total">$24.00</span>
+                        </div>
+                        <div class="amount-due">
+                            Amount Due
+                            <span class="total">$154.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+        const goBack = document.querySelector('.go-back')
+        goBack.addEventListener('click', function () {
+            window.location = ""
+        })
+    })
+}
+
+
+
 
 
