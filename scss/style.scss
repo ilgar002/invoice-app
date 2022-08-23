@@ -365,14 +365,14 @@ main {
 
         .status {
             height: 40px;
-            max-width: 110px;
+            min-width: 110px;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 8px;
             gap: 8px;
             flex: 1;
-            padding: 0 24px;
+            // padding: 0 24px;
 
             .circle {
                 width: 7px;
@@ -495,11 +495,17 @@ main {
 
                         &.pay {
                             background-color: #7c5dfa;
+                            display: none;
 
                             &:hover {
                                 color: #7c5dfa;
                                 background-color: #fff;
                             }
+                        }
+                    }
+                    &.pending{
+                        .pay{
+                            display: block;
                         }
                     }
                 }
@@ -611,18 +617,6 @@ main {
                         }
                     }
 
-                    .item-row {
-                        display: flex;
-                        justify-content: space-between;
-                        padding: 0 32px;
-
-                        span {
-                            flex: 1;
-                            font-size: .9rem;
-                            font-weight: 600;
-                        }
-                    }
-
                     .amount-due {
                         padding: 32px;
                         display: flex;
@@ -642,6 +636,23 @@ main {
                 }
 
 
+                .items-info {
+                    gap: 30px;
+                    display: flex;
+                    flex-direction: column;
+
+                    .item-row {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 0 32px;
+
+                        span {
+                            flex: 1;
+                            font-size: .9rem;
+                            font-weight: 600;
+                        }
+                    }
+                }
             }
         }
     }
@@ -1006,7 +1017,7 @@ main {
         padding-left: 110px;
 
         .main-content {
-            padding-top: 72px;
+            padding: 72px 0;
         }
 
         .create-new-invoice {
@@ -1050,10 +1061,9 @@ main {
     main {
         padding-top: 72px;
         width: 100%;
-        // height: calc(100vh - 72px);
 
         .main-content {
-            margin-top: 56px;
+            padding: 56px 0;
         }
 
         .create-new-invoice {

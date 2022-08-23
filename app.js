@@ -223,9 +223,10 @@ function idGenerator() {
 const invoices = document.querySelector('.invoices')
 function createInvoice(id, date, clientName, totalAmount, status) {
     const newInvoice = document.createElement('div')
-    newInvoice.classList.add(".invoice")
-    newInvoice.innerHTML = `<div class="invoice">
-                    <span class="id">
+    newInvoice.classList.add("invoice")
+    newInvoice.setAttribute('data-id', id)
+    newInvoice.innerHTML =
+        `<span class="id">
                         <span class="hashtag">
                             #
                         </span>
@@ -243,10 +244,12 @@ function createInvoice(id, date, clientName, totalAmount, status) {
                     <span class="status ${status}">
                         <span class="circle"></span>
                         <span>${status.charAt(0).toUpperCase() + status.slice(1)}</span>
-                    </span>
-                </div>`
+                    </span>`
     invoices.append(newInvoice)
+    openDetails(newInvoice)
 }
+
+const invoicesList = localStorage.getItem("invoices") ? JSON.parse(localStorage.getItem("invoices")) : [];
 
 const newInvoiceForm = document.querySelector('.new-invoice-form')
 newInvoiceForm.addEventListener('submit', function (e) {
@@ -264,7 +267,18 @@ newInvoiceForm.addEventListener('submit', function (e) {
         }
         const id = idGenerator()
         createInvoice(id, date, clientName, totalAmount, "pending")
-        localStorage.setItem("invoice", JSON.stringify({
+        const items = newInvoiceForm.querySelectorAll('.item')
+        const itemList = []
+        for (let i = 0; i < items.length; i++) {
+            const obj = {
+                "name": items[i].querySelectorAll('input')[0].value,
+                "quantity": items[i].querySelectorAll('input')[1].value,
+                "price": items[i].querySelectorAll('input')[2].value,
+                "total": amounts[i].innerText
+            }
+            itemList.push(obj)
+        }
+        const data = {
             "id": `${id}`,
             "from": {
                 "street": newInvoiceForm.querySelector('.from-street').value,
@@ -283,21 +297,24 @@ newInvoiceForm.addEventListener('submit', function (e) {
             "invoiceDate": newInvoiceForm.querySelector('.today').innerText,
             "paymentTerms": newInvoiceForm.querySelector('.current.option').innerText,
             "description": newInvoiceForm.querySelector('.project-description').value,
-            "items": [
-                {
-                    "name": "Website Redesign",
-                    "quantity": 1,
-                    "price": 14002.33,
-                    "total": 14002.33
-                }
-            ],
+            'items': itemList,
             "status": "pending",
             "total": totalAmount
-        })
-        )
+        }
+        invoicesList.push(data)
+        localStorage.setItem("invoices", JSON.stringify(invoicesList))
         refreshForm()
     }
 })
+
+//get data from Local Storage
+function getData() {
+    for (let i = 0; i < invoicesList.length; i++) {
+
+        createInvoice(invoicesList[i].id, invoicesList[i].invoiceDate, invoicesList[i].to.clientName, invoicesList[i].total, invoicesList[i].status)
+    }
+}
+getData()
 
 
 
@@ -436,18 +453,20 @@ function refreshForm() {
     total.innerText = '0.00'
     const quantity = newInvoiceForm.querySelector('.quantity')
     quantity.value = "1"
-    // main.classList.remove('open-invoice')
+    main.classList.remove('open-invoice')
 }
 
-
 const mainContent = main.querySelector('.main-content')
-const allInvoice = document.querySelectorAll('.invoice')
-for (let i = 0; i < allInvoice.length; i++) {
-    allInvoice[i].addEventListener('click', function () {
+function openDetails(invoice) {
+    invoice.addEventListener('click', function () {
         const id = this.getAttribute('data-id')
         window.location.hash = `invoice/${id}`
-        mainContent.innerHTML = 
-            `<div class="details">
+        const result = invoicesList.find((el) => {
+            if (el.id == id) {
+                return true
+            }
+        })
+        mainContent.innerHTML = `<div class="details">
                 <button class="go-back">
                     <img src="./images/icon-arrow-left.svg" alt="icon-arrow">
                         <span>Go back</span>
@@ -455,12 +474,12 @@ for (let i = 0; i < allInvoice.length; i++) {
                 <div class="caption">
                     <div class="left container">
                         <span>Status</span>
-                        <span class="status paid">
+                        <span class="status ${result.status}">
                             <span class="circle"></span>
-                            <span>Paid</span>
+                            <span class="text">${result.status.charAt(0).toUpperCase() + result.status.slice(1)}</span>
                         </span>
                     </div>
-                    <div class="buttons right container">
+                    <div class="buttons right container ${result.status}">
                         <button class="edit">Edit</button>
                         <button class="delete">Delete</button>
                         <button class="pay">Mark as Paid</button>
@@ -476,21 +495,21 @@ for (let i = 0; i < allInvoice.length; i++) {
                                 ${id}
                             </span>
                             <span class="p-decription">
-                                Re-branding
+                                ${result.description}
                             </span>
                         </div>
                         <div class="xs-container">
                             <span class="small street">
-                                Azerbaijan
+                                ${result.from.street}
                             </span>
                             <span class="small city">
-                                Baku
+                                ${result.from.city}
                             </span>
                             <span class="small postCode">
-                                1005
+                                ${result.from.postCode}
                             </span>
                             <span class="small country">
-                                Azerbaijan
+                                ${result.from.country}
                             </span>
                         </div>
                     </div>
@@ -499,7 +518,7 @@ for (let i = 0; i < allInvoice.length; i++) {
                             <span class="invoice-date">
                                 Invoice Date
                                 <span>
-                                    22 Aug 2022
+                                    ${result.invoiceDate}
                                 </span>
                             </span>
                             <span class="payment-due">
@@ -512,25 +531,25 @@ for (let i = 0; i < allInvoice.length; i++) {
                         <div class="xs-container">
                             Bill To
                             <span class="name bold">
-                                Ilgar Ismayilzada
+                                ${result.to.clientName}
                             </span>
                             <span class="small street">
-                                toAzerbaijan
+                                ${result.to.street}
                             </span>
                             <span class="small city">
-                                toBaku
+                                ${result.to.city}
                             </span>
                             <span class="small postCode">
-                                to1005
+                                ${result.to.postCode}
                             </span>
                             <span class="small country">
-                                toAzerbaijan
+                                ${result.to.country}
                             </span>
                         </div>
                         <div class="xs-container">
                             Sent To
                             <div class="email bold">
-                                ilgar.ismayilzada002@gmail.com
+                                ${result.to.clientEmail}
                             </div>
                         </div>
                     </div>
@@ -541,39 +560,63 @@ for (let i = 0; i < allInvoice.length; i++) {
                             <span>Price</span>
                             <span>Total</span>
                         </div>
-                        <div class="item-row">
-                            <span class="item-name">Toy</span>
-                            <span class="qty">3</span>
-                            <span class="price">$12.00</span>
-                            <span class="total">$24.00</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-name">Ball</span>
-                            <span class="qty">2</span>
-                            <span class="price">$12.00</span>
-                            <span class="total">$24.00</span>
-                        </div>
-                        <div class="item-row">
-                            <span class="item-name">Jocker</span>
-                            <span class="qty">2</span>
-                            <span class="price">$12.00</span>
-                            <span class="total">$24.00</span>
-                        </div>
+                        <div class="items-info"></div>
                         <div class="amount-due">
                             Amount Due
-                            <span class="total">$154.00</span>
+                            <span class="total">$${result.total}</span>
                         </div>
                     </div>
                 </div>
             </div>`
+        const details = document.querySelector('.details')
+        const items = document.querySelector('.items-info')
+        for (let i = 0; i < result.items.length; i++) {
+
+            items.innerHTML +=
+                `<div class="item-row">
+                    <span class="item-name">${result.items[i].name}</span>
+                    <span class="qty">${result.items[i].quantity}</span>
+                    <span class="price">${result.items[i].price}</span>
+                    <span class="total">${result.items[i].total}</span>
+                </div>`
+        }
+
         const goBack = document.querySelector('.go-back')
         goBack.addEventListener('click', function () {
             window.location = ""
+        })
+        const pay = details.querySelector('.pay')
+        const pending = details.querySelector('.pending')
+        const deleteInvoiceBtn = details.querySelector('.delete')
+        deleteInvoiceBtn.addEventListener('click', function () {
+            invoicesList.forEach((el, index) => {
+                if (el.id == id) {
+                    invoicesList.splice(index,1)
+                }
+            })
+            localStorage.setItem('invoices', JSON.stringify(invoicesList))
+            window.location = ""
+        })
+        pay.addEventListener('click', function () {
+            pay.remove()
+            pending.classList.remove("pending")
+            pending.classList.add('paid')
+            pending.querySelector('.text').innerText = "Paid"
+            invoicesList.map((el) => {
+                if (el.id == id) {
+                    el.status = 'paid'
+                }
+            })
+            localStorage.setItem('invoices', JSON.stringify(invoicesList))
+
         })
     })
 }
 
 
-
-
-
+//number of invoice
+function countInvoice() {
+    const invoiceNumber = document.querySelector('.invoice-number')
+    invoiceNumber.innerText=`There are ${invoicesList.length} total invoices`
+}
+countInvoice()

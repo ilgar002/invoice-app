@@ -593,7 +593,7 @@ main .main-content .invoices .invoice:hover {
 
 main .main-content .status {
   height: 40px;
-  max-width: 110px;
+  min-width: 110px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -608,7 +608,6 @@ main .main-content .status {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding: 0 24px;
 }
 
 main .main-content .status .circle {
@@ -761,11 +760,16 @@ main .main-content .details .caption .buttons button.delete:hover {
 
 main .main-content .details .caption .buttons button.pay {
   background-color: #7c5dfa;
+  display: none;
 }
 
 main .main-content .details .caption .buttons button.pay:hover {
   color: #7c5dfa;
   background-color: #fff;
+}
+
+main .main-content .details .caption .buttons.pending .pay {
+  display: block;
 }
 
 main .main-content .details .details-data {
@@ -916,24 +920,6 @@ main .main-content .details .details-data .items-data .item-caption span {
   font-size: .85rem;
 }
 
-main .main-content .details .details-data .items-data .item-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0 32px;
-}
-
-main .main-content .details .details-data .items-data .item-row span {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  font-size: .9rem;
-  font-weight: 600;
-}
-
 main .main-content .details .details-data .items-data .amount-due {
   padding: 32px;
   display: -webkit-box;
@@ -955,6 +941,35 @@ main .main-content .details .details-data .items-data .amount-due {
 main .main-content .details .details-data .items-data .amount-due .total {
   font-size: 1.4rem;
   font-weight: 800;
+}
+
+main .main-content .details .details-data .items-info {
+  gap: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main .main-content .details .details-data .items-info .item-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 32px;
+}
+
+main .main-content .details .details-data .items-info .item-row span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: .9rem;
+  font-weight: 600;
 }
 
 main .create-new-invoice {
@@ -1357,7 +1372,7 @@ main.open-invoice .filter-layout {
     padding-left: 110px;
   }
   main .main-content {
-    padding-top: 72px;
+    padding: 72px 0;
   }
   main .create-new-invoice {
     left: -1000px;
@@ -1396,7 +1411,7 @@ main.open-invoice .filter-layout {
     width: 100%;
   }
   main .main-content {
-    margin-top: 56px;
+    padding: 56px 0;
   }
   main .create-new-invoice {
     height: calc(100vh - 72px);
