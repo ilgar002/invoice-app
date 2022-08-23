@@ -93,7 +93,7 @@ for (let i = 0; i < statusOptions.length; i++) {
                     createInvoice(invoicesList[i].id, invoicesList[i].invoiceDate, invoicesList[i].to.clientName, invoicesList[i].total, invoicesList[i].status)
                 }
             }
-            const invoice=document.querySelectorAll('.invoice')
+            const invoice = document.querySelectorAll('.invoice')
             console.log(invoice);
             document.querySelector('.invoice-number').innerText = `There are ${invoice.length} total invoices`
         }
@@ -329,6 +329,8 @@ newInvoiceForm.addEventListener('submit', function (e) {
         countInvoice()
     }
 })
+
+
 
 //get data from Local Storage
 function getData() {
@@ -657,3 +659,56 @@ function countInvoice() {
     }
 }
 countInvoice()
+
+
+//save as draft
+const draftBtn = newInvoiceForm.querySelector('button.draft')
+draftBtn.addEventListener('click', function () {
+    let date = newInvoiceForm.querySelector('.today').innerText
+    let clientName = newInvoiceForm.querySelector('.client-name').value
+    let amounts = document.querySelectorAll('.total')
+    let totalAmount = 0
+    for (let i = 0; i < amounts.length; i++) {
+        totalAmount += Number(amounts[i].innerText)
+    }
+    const id = idGenerator()
+    createInvoice(id, date, clientName, totalAmount, "draft")
+    const items = newInvoiceForm.querySelectorAll('.item')
+    const itemList = []
+    for (let i = 0; i < items.length; i++) {
+        const obj = {
+            "name": items[i].querySelectorAll('input')[0].value,
+            "quantity": items[i].querySelectorAll('input')[1].value,
+            "price": items[i].querySelectorAll('input')[2].value,
+            "total": amounts[i].innerText
+        }
+        itemList.push(obj)
+    }
+    const data = {
+        "id": `${id}`,
+        "from": {
+            "street": newInvoiceForm.querySelector('.from-street').value,
+            "city": newInvoiceForm.querySelector('.from-city').value,
+            "postCode": newInvoiceForm.querySelector('.from-postCode').value,
+            "country": newInvoiceForm.querySelector('.from-country').value
+        },
+        "to": {
+            "clientName": newInvoiceForm.querySelector('.client-name').value,
+            "clientEmail": newInvoiceForm.querySelector('.email-input').value,
+            "street": newInvoiceForm.querySelector('.to-street').value,
+            "city": newInvoiceForm.querySelector('.to-city').value,
+            "postCode": newInvoiceForm.querySelector('.to-postCode').value,
+            "country": newInvoiceForm.querySelector('.to-country').value
+        },
+        "invoiceDate": newInvoiceForm.querySelector('.today').innerText,
+        "paymentTerms": newInvoiceForm.querySelector('.current.option').innerText,
+        "description": newInvoiceForm.querySelector('.project-description').value,
+        'items': itemList,
+        "status": "draft",
+        "total": totalAmount
+    }
+    invoicesList.push(data)
+    localStorage.setItem("invoices", JSON.stringify(invoicesList))
+    refreshForm()
+    countInvoice()
+})
