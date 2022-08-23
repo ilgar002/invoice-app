@@ -1,0 +1,121 @@
+header {
+    background-color: $clr-primary;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 100;
+
+    .logo {
+        border-top-right-radius: 20px;
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $clr-purple;
+        border-bottom-right-radius: 20px;
+
+        svg {
+            z-index: 3;
+        }
+
+        &::after {
+            content: "";
+            height: 50%;
+            width: 100%;
+            background-color: $clr-light-purple;
+            position: absolute;
+            bottom: 0;
+            border-top-left-radius: 20px;
+            z-index: 2;
+            transition: .3s ease;
+            border-bottom-right-radius: 20px;
+        }
+
+        &:hover {
+            &::after {
+                height: 90%;
+                border-top-right-radius: 10px;
+            }
+        }
+    }
+
+    .theme-profile {
+        display: flex;
+
+        .theme-buttons {
+            display: flex;
+            justify-content: center;
+            padding: 32px;
+
+            .moon-icon {
+                display: none;
+                cursor: pointer;
+            }
+
+            .sun-icon {
+                cursor: pointer;
+            }
+        }
+
+        .profile-photo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+        }
+    }
+}
+
+@media(min-width:1440px) {
+    header {
+        flex-direction: column;
+        height: 100vh;
+        width: 105px;
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+        .logo {
+            height: 100px;
+        }
+        .theme-profile {
+            flex-direction: column;
+            .profile-photo {
+                height: 100px;
+                border-top: 0.9px solid #858BB2;
+            }
+        }
+    }
+}
+
+@media(max-width:1439px) {
+    header {
+        flex-direction: row;
+        width: 100%;
+        height: 72px;
+
+        .logo {
+            height: 72px;
+            width: 72px;
+            background-color: $clr-purple;
+        }
+
+        .theme-profile {
+            .theme-buttons {
+                align-items: center;
+
+            }
+
+            .profile-photo {
+                border-left: 0.9px solid #858BB2;
+                width: 100px;
+            }
+        }
+    }
+}
