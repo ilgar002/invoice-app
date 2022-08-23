@@ -422,7 +422,6 @@ main .main-content .no-invoice-message {
       -ms-flex-align: center;
           align-items: center;
   color: #fff;
-  display: none;
 }
 
 main .main-content .no-invoice-message img {

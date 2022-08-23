@@ -75,9 +75,32 @@ statusFilter.addEventListener('click', function (params) {
     filterDropdown.classList.add('show')
 })
 for (let i = 0; i < statusOptions.length; i++) {
-    statusOptions[i].addEventListener('click', function (params) {
+    statusOptions[i].addEventListener('click', function () {
         statusOptions[i].querySelector("svg").classList.toggle("show")
         statusOptions[i].querySelector('.checkbox').classList.toggle('active')
+        statusOptions[i].classList.toggle('current')
+        invoices.innerHTML = ''
+        const selected = []
+        for (let i = 0; i < statusOptions.length; i++) {
+            if (statusOptions[i].classList.contains('current')) {
+                selected.push(statusOptions[i].innerText.toLowerCase())
+            }
+        }
+        console.log(selected);
+        if (selected.length > 0) {
+            for (let i = 0; i < invoicesList.length; i++) {
+                if (selected.includes(invoicesList[i].status)) {
+                    createInvoice(invoicesList[i].id, invoicesList[i].invoiceDate, invoicesList[i].to.clientName, invoicesList[i].total, invoicesList[i].status)
+                }
+            }
+            const invoice=document.querySelectorAll('.invoice')
+            console.log(invoice);
+            document.querySelector('.invoice-number').innerText = `There are ${invoice.length} total invoices`
+        }
+        else if (selected.length == 0) {
+            getData()
+            countInvoice()
+        }
     })
     document.addEventListener('click', (e) => {
         const clickedArea = e.composedPath()
@@ -218,7 +241,6 @@ function idGenerator() {
     return result
 }
 
-
 //create invoice
 const invoices = document.querySelector('.invoices')
 function createInvoice(id, date, clientName, totalAmount, status) {
@@ -304,13 +326,13 @@ newInvoiceForm.addEventListener('submit', function (e) {
         invoicesList.push(data)
         localStorage.setItem("invoices", JSON.stringify(invoicesList))
         refreshForm()
+        countInvoice()
     }
 })
 
 //get data from Local Storage
 function getData() {
     for (let i = 0; i < invoicesList.length; i++) {
-
         createInvoice(invoicesList[i].id, invoicesList[i].invoiceDate, invoicesList[i].to.clientName, invoicesList[i].total, invoicesList[i].status)
     }
 }
@@ -425,6 +447,16 @@ function today() {
     const todayInput = document.querySelector(".date-picker .today")
     todayInput.innerText = today
 }
+//count payment due
+function paymentDue(invoiceDate, paymentTerms) {
+    const term = paymentTerms.split(' ')[1]
+    let date = new Date(invoiceDate).setDate(new Date(invoiceDate).getDate() + parseInt(term))
+    date = new Date(date)
+    date = date.toDateString('default', { month: 'short' });
+    date = date.split(' ')
+    date = `${date[2] + ' ' + date[1] + ' ' + date[3]}`
+    return date
+}
 
 
 //refresh invoice form
@@ -524,7 +556,7 @@ function openDetails(invoice) {
                             <span class="payment-due">
                                 Payment Due
                                 <span>
-                                    07 Mar 2024
+                                    ${paymentDue(result.invoiceDate, result.paymentTerms)}
                                 </span>
                             </span>
                         </div>
@@ -591,11 +623,12 @@ function openDetails(invoice) {
         deleteInvoiceBtn.addEventListener('click', function () {
             invoicesList.forEach((el, index) => {
                 if (el.id == id) {
-                    invoicesList.splice(index,1)
+                    invoicesList.splice(index, 1)
                 }
             })
             localStorage.setItem('invoices', JSON.stringify(invoicesList))
             window.location = ""
+            countInvoice()
         })
         pay.addEventListener('click', function () {
             pay.remove()
@@ -617,6 +650,10 @@ function openDetails(invoice) {
 //number of invoice
 function countInvoice() {
     const invoiceNumber = document.querySelector('.invoice-number')
-    invoiceNumber.innerText=`There are ${invoicesList.length} total invoices`
+    const noInvoiceMessage = document.querySelector('.no-invoice-message')
+    invoiceNumber.innerText = `There are ${invoicesList.length} total invoices`
+    if (invoicesList.length > 0) {
+        noInvoiceMessage.style.display = 'none'
+    }
 }
 countInvoice()
