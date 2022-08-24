@@ -645,8 +645,74 @@ function openDetails(invoice) {
             localStorage.setItem('invoices', JSON.stringify(invoicesList))
 
         })
+        const editBtn = details.querySelector('button.edit')
+        editBtn.addEventListener('click', function () {
+            for (let i = 0; i < invoicesList.length; i++) {
+                if (invoicesList[i].id == id) {
+                    const result = invoicesList[i]
+                }
+            }
+            main.classList.add('open-invoice')
+            document.addEventListener('click', (e) => {
+                for (let i = 0; i < headerChi.length; i++) {
+                    if (headerChi[i] == e.target) {
+                        main.classList.remove('open-invoice')
+                        refreshForm()
+                    }
+                }
+                if (e.target == layout || e.target == header) {
+                    main.classList.remove('open-invoice')
+                    refreshForm()
+                }
+            })
+            console.log(newInvoiceForm);
+            newInvoiceForm.querySelector('.from-street').value = result.from.street
+            newInvoiceForm.querySelector('.from-city').value = result.from.city
+            newInvoiceForm.querySelector('.from-postCode').value = result.from.postCode
+            newInvoiceForm.querySelector('.from-country').value = result.from.country
+            newInvoiceForm.querySelector('.client-name').value = result.to.clientName
+            newInvoiceForm.querySelector('.email-input').value = result.to.clientEmail
+            newInvoiceForm.querySelector('.to-street').value = result.to.street
+            newInvoiceForm.querySelector('.to-city').value = result.to.city
+            newInvoiceForm.querySelector('.to-postCode').value = result.to.postCode
+            newInvoiceForm.querySelector('.to-country').value = result.to.country
+            newInvoiceForm.querySelector('.today').innerText = result.invoiceDate
+            newInvoiceForm.querySelector('.today').innerText = result.invoiceDate
+            newInvoiceForm.querySelector('.select-term .current').innerText = result.paymentTerms
+            newInvoiceForm.querySelector('.project-description').value = result.description
+            const items = newInvoiceForm.querySelector('.items')
+            const itemHtml = newInvoiceForm.querySelector('.items .item').innerHTML
+
+            if (result.items.length > 1) {
+                for (let i = 1; i < result.items.length; i++) {
+                    const item = document.createElement('div')
+                    item.classList.add('item')
+                    item.innerHTML = `${itemHtml}`
+                    items.append(item)
+                    deleteItemStatus = true;
+                    deleteItem()
+                    itemPrice(item)
+                }
+            }
+            const allItem = newInvoiceForm.querySelectorAll('.item')
+            for (let i = 0; i < allItem.length; i++) {
+                const allInput = allItem[i].querySelectorAll('input')
+                const total = allItem[i].querySelector('.total')
+                allInput[0].value = result.items[i].name
+                allInput[1].value = result.items[i].quantity
+                allInput[2].value = result.items[i].price
+                total.innerText = result.items[i].total
+            }
+
+            newInvoiceForm.querySelector('.main-buttons').classList.add('hide')
+            newInvoiceForm.querySelector('.edit-buttons').classList.add('show')
+        })
     })
 }
+
+//edit buttons-cancel
+const cancelEdit = newInvoiceForm.querySelector('.edit-buttons .cancel')
+cancelEdit.addEventListener('click', refreshForm)
 
 
 //number of invoice

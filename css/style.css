@@ -915,7 +915,7 @@ body {
   fill: #fff;
 }
 
-.create-new-invoice .new-invoice-form .buttons {
+.create-new-invoice .new-invoice-form .main-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -924,7 +924,7 @@ body {
           justify-content: space-between;
 }
 
-.create-new-invoice .new-invoice-form .buttons button {
+.create-new-invoice .new-invoice-form .main-buttons button {
   border: none;
   padding: 0 24px;
   height: 48px;
@@ -935,17 +935,54 @@ body {
   cursor: pointer;
 }
 
-.create-new-invoice .new-invoice-form .buttons .discard {
+.create-new-invoice .new-invoice-form .main-buttons .discard {
   background: #252945;
 }
 
-.create-new-invoice .new-invoice-form .buttons .draft {
+.create-new-invoice .new-invoice-form .main-buttons .draft {
   background: #373b53;
   margin-right: 10px;
 }
 
-.create-new-invoice .new-invoice-form .buttons .save {
+.create-new-invoice .new-invoice-form .main-buttons .save {
   background: #7c5dfa;
+}
+
+.create-new-invoice .new-invoice-form .main-buttons.hide {
+  display: none;
+}
+
+.create-new-invoice .new-invoice-form .edit-buttons {
+  display: none;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 15px;
+}
+
+.create-new-invoice .new-invoice-form .edit-buttons button {
+  border: none;
+  padding: 0 24px;
+  height: 48px;
+  border-radius: 24px;
+  color: #fff;
+  font-weight: 700;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+.create-new-invoice .new-invoice-form .edit-buttons .cancel {
+  background: #373b53;
+}
+
+.create-new-invoice .new-invoice-form .edit-buttons .save-changes {
+  background: #7c5dfa;
+}
+
+.create-new-invoice .new-invoice-form .edit-buttons.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 main.open-invoice .filter-layout {

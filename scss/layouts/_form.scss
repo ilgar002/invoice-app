@@ -244,7 +244,7 @@
             }
         }
 
-        .buttons {
+        .main-buttons {
             display: flex;
             justify-content: space-between;
 
@@ -270,6 +270,38 @@
 
             .save {
                 background: $clr-purple;
+            }
+            &.hide{
+                display: none;
+            }
+        }
+
+        .edit-buttons {
+            display: none;
+            justify-content: flex-end;
+            gap: 15px;
+
+            button {
+                border: none;
+                padding: 0 24px;
+                height: 48px;
+                border-radius: 24px;
+                color: #fff;
+                font-weight: 700;
+                font-size: .9rem;
+                cursor: pointer;
+            }
+
+            .cancel {
+                background: #373b53;
+            }
+
+            .save-changes {
+                background: $clr-purple;
+            }
+
+            &.show {
+                display: flex;
             }
         }
     }
