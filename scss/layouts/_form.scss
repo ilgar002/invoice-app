@@ -134,12 +134,16 @@
                 transform: translateY(80%);
 
                 .option {
-                    border-bottom: 1px solid #252945;
+                    
                     font-weight: 700;
                     font-size: .9rem;
                     padding: 16px 16px;
                     cursor: pointer;
                     transition: 0.1s;
+
+                    &:not(:last-child) {
+                        border-bottom: 1px solid #252945;
+                    }
 
                     &:hover {
                         color: $clr-purple;
@@ -271,7 +275,8 @@
             .save {
                 background: $clr-purple;
             }
-            &.hide{
+
+            &.hide {
                 display: none;
             }
         }

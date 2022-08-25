@@ -3,6 +3,41 @@ window.addEventListener('keydown', function (e) {
         e.preventDefault()
     }
 })
+const container=document.querySelector('.container')
+const body=document.querySelector('body')
+const themeButton = document.querySelector('.theme-buttons')
+// console.log(themeButton);
+
+//theme
+if (localStorage.getItem('mode') === null) {
+    body.style.backgroundColor = "#141625"
+    localStorage.setItem('mode', 'dark')
+    container.classList.remove('light-mode')
+}
+else {
+    if (localStorage.getItem('mode') === 'dark') {
+        body.style.backgroundColor = "#141625"
+        container.classList.remove('light-mode')
+        localStorage.setItem('mode', 'dark')
+    }
+    else if (localStorage.getItem('mode') === 'light') {
+        body.style.backgroundColor = "#f8f8fb"
+        container.classList.add('light-mode')
+        localStorage.setItem('mode', 'light')
+    }
+}
+themeButton.addEventListener("click", function () {
+    if (localStorage.getItem('mode') == 'dark') {
+        body.style.backgroundColor = "#f8f8fb"
+        container.classList.add('light-mode')
+        localStorage.setItem('mode', 'light')
+    }
+    else if (localStorage.getItem('mode') == 'light') {
+        body.style.backgroundColor = "#141625"
+        container.classList.remove('light-mode')
+        localStorage.setItem('mode', 'dark')
+    }
+})
 
 
 

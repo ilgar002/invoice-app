@@ -1,9 +1,11 @@
 main {
     background-color: $clr-dark-background;
+
     display: flex;
     justify-content: center;
     min-height: 100vh;
     position: relative;
+
 
     .main-content {
         min-width: 60%;
@@ -40,6 +42,7 @@ main {
                     .options-dropdown {
                         position: absolute;
                         background-color: $clr-primary;
+
                         padding: 24px;
                         top: 130%;
                         right: 0;
@@ -55,10 +58,11 @@ main {
                                 height: 16px;
                                 border-radius: 2px;
                                 background-color: $clr-dark-background;
+
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
-                                transition: all 0.1s ease;
+
 
                                 svg {
                                     display: none;
@@ -70,6 +74,7 @@ main {
 
                                 &.active {
                                     background-color: $clr-purple;
+
                                 }
                             }
 
@@ -83,6 +88,7 @@ main {
 
                             &:hover {
                                 color: $clr-purple;
+
 
                                 .checkbox {
                                     border: 1px solid $clr-purple;
@@ -103,7 +109,9 @@ main {
 
                 .new-invoice-btn {
                     background-color: $clr-purple;
+
                     color: #fff;
+
                     display: flex;
                     align-items: center;
                     gap: 12px;
@@ -116,6 +124,7 @@ main {
 
                     span {
                         background-color: #fff;
+
                         width: 32px;
                         height: 32px;
                         border-radius: 50%;
@@ -136,6 +145,7 @@ main {
             color: #fff;
 
 
+
             img {
                 width: 242px;
                 height: 200px;
@@ -154,6 +164,7 @@ main {
                 letter-spacing: -.25px;
                 text-align: center;
                 color: #888eb0;
+
             }
 
             &.show {
@@ -168,6 +179,7 @@ main {
 
             .invoice {
                 background-color: #1F2139;
+
                 border: 1px solid #1F2139;
                 padding: 24px;
                 line-height: 40px;
@@ -177,7 +189,7 @@ main {
                 justify-content: space-between;
                 align-items: center;
                 cursor: pointer;
-                transition: all .2s ease;
+
 
                 .id {
                     font-weight: 700;
@@ -186,6 +198,7 @@ main {
 
                     .hashtag {
                         color: $clr-light-purple;
+
                     }
 
                 }
@@ -233,36 +246,45 @@ main {
                     &.paid {
                         background-color: #212B3F;
 
+
                         .circle {
                             background-color: #33D69F;
+
                         }
 
                         span {
                             color: #33D69F;
+
                         }
                     }
 
                     &.pending {
                         background-color: #ff8f000d;
 
+
                         .circle {
                             background-color: #ff8f00;
+
                         }
 
                         span {
                             color: #ff8f00;
+
                         }
                     }
 
                     &.draft {
                         background-color: #dfe3fa0f;
 
+
                         .circle {
                             background-color: #fff;
+
                         }
 
                         span {
                             color: #fff;
+
                         }
                     }
                 }
@@ -298,36 +320,45 @@ main {
             &.paid {
                 background-color: #212B3F;
 
+
                 .circle {
                     background-color: #33D69F;
+
                 }
 
                 span {
                     color: #33D69F;
+
                 }
             }
 
             &.pending {
                 background-color: #ff8f000d;
 
+
                 .circle {
                     background-color: #ff8f00;
+
                 }
 
                 span {
                     color: #ff8f00;
+
                 }
             }
 
             &.draft {
                 background-color: #dfe3fa0f;
 
+
                 .circle {
                     background-color: #fff;
+
                 }
 
                 span {
                     color: #fff;
+
                 }
             }
         }
@@ -342,6 +373,8 @@ main {
         width: 100%;
         z-index: -3;
         background: rgba(0, 0, 0, .4984);
+        border-top-left-radius: 220px;
+        border-bottom-left-radius: 220px;
         transition: all .3s ease;
     }
 }

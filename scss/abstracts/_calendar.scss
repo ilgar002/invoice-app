@@ -32,7 +32,8 @@
         border: 1px solid #252945;
         border-radius: 8px;
         display: none;
-        &.show{
+
+        &.show {
             display: block;
         }
 
@@ -107,4 +108,45 @@
 
 .ui-state-active {
     background-color: #7c5dfa;
+}
+
+.container {
+    &.light-mode {
+        .date-picker {
+            color: #00083a;
+
+            .input.result {
+                color: #00083a;
+            }
+
+            .calendar {
+                // background-color: #dce0f6;
+                background-color: #fff;
+                // border: 1px solid #fff;
+                border: none;
+            }
+        }
+
+
+        .date-picker .ui-datepicker-calendar thead tr th span {
+            color: #7a7272;
+        }
+
+        .date-picker .ui-state-default {
+            color: #00083a;
+
+            &:hover {
+                background-color: #7c5dfa;
+                color: #fff;
+            }
+        }
+
+        .ui-state-active {
+            background-color: #7c5dfa;
+        }
+
+        .ui-state-highlight {
+            color: #fff !important;
+        }
+    }
 }

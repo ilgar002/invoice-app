@@ -126,6 +126,40 @@
   background-color: #7c5dfa;
 }
 
+.container.light-mode .date-picker {
+  color: #00083a;
+}
+
+.container.light-mode .date-picker .input.result {
+  color: #00083a;
+}
+
+.container.light-mode .date-picker .calendar {
+  background-color: #fff;
+  border: none;
+}
+
+.container.light-mode .date-picker .ui-datepicker-calendar thead tr th span {
+  color: #7a7272;
+}
+
+.container.light-mode .date-picker .ui-state-default {
+  color: #00083a;
+}
+
+.container.light-mode .date-picker .ui-state-default:hover {
+  background-color: #7c5dfa;
+  color: #fff;
+}
+
+.container.light-mode .ui-state-active {
+  background-color: #7c5dfa;
+}
+
+.container.light-mode .ui-state-highlight {
+  color: #fff !important;
+}
+
 header {
   background-color: #252945;
   display: -webkit-box;
@@ -168,8 +202,6 @@ header .logo::after {
   bottom: 0;
   border-top-left-radius: 20px;
   z-index: 2;
-  -webkit-transition: .3s ease;
-  transition: .3s ease;
   border-bottom-right-radius: 20px;
 }
 
@@ -213,6 +245,10 @@ header .theme-profile .profile-photo {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 header .theme-profile .profile-photo img {
@@ -282,7 +318,6 @@ header .theme-profile .profile-photo img {
 
 body {
   min-height: 100vh;
-  color: #fff;
   font-family: Spartan, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #141625;
 }
@@ -772,13 +807,16 @@ body {
 }
 
 .create-new-invoice .new-invoice-form .select-term .options-dropdwon .option {
-  border-bottom: 1px solid #252945;
   font-weight: 700;
   font-size: .9rem;
   padding: 16px 16px;
   cursor: pointer;
   -webkit-transition: 0.1s;
   transition: 0.1s;
+}
+
+.create-new-invoice .new-invoice-form .select-term .options-dropdwon .option:not(:last-child) {
+  border-bottom: 1px solid #252945;
 }
 
 .create-new-invoice .new-invoice-form .select-term .options-dropdwon .option:hover {
@@ -1112,8 +1150,6 @@ main .main-content .main-caption .tools .filter-status .options-dropdown .option
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-transition: all 0.1s ease;
-  transition: all 0.1s ease;
 }
 
 main .main-content .main-caption .tools .filter-status .options-dropdown .option .checkbox svg {
@@ -1254,8 +1290,6 @@ main .main-content .invoices .invoice {
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .id {
@@ -1440,6 +1474,8 @@ main .filter-layout {
   width: 100%;
   z-index: -3;
   background: rgba(0, 0, 0, 0.4984);
+  border-top-left-radius: 220px;
+  border-bottom-left-radius: 220px;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
 }
@@ -1460,6 +1496,169 @@ main .filter-layout {
   }
   main .main-content {
     padding: 56px 0;
+  }
+}
+
+.container {
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  color: #fff;
+}
+
+.container.light-mode {
+  color: #141625;
+}
+
+.container.light-mode header {
+  background-color: #7c5dfa;
+}
+
+.container.light-mode header .logo {
+  background-color: #33D69F;
+}
+
+.container.light-mode header .logo::after {
+  background-color: #78e7c1;
+}
+
+.container.light-mode header .theme-buttons svg path {
+  fill: #fff;
+}
+
+.container.light-mode header .theme-buttons .sun-icon {
+  display: none;
+}
+
+.container.light-mode header .theme-buttons .moon-icon {
+  display: block;
+}
+
+.container.light-mode main {
+  background-color: #f8f8fb;
+}
+
+.container.light-mode main .main-content .main-caption .tools .filter-status .options-dropdown {
+  background-color: #fff;
+}
+
+.container.light-mode main .main-content .main-caption .tools .filter-status .options-dropdown .option .checkbox {
+  background-color: #dfe3fa;
+}
+
+.container.light-mode main .main-content .main-caption .tools .filter-status .options-dropdown .option .checkbox.active {
+  background-color: #7c5dfa;
+}
+
+.container.light-mode main .main-content .status.draft {
+  background: rgba(55, 59, 83, 0.0571);
+}
+
+.container.light-mode main .main-content .status.draft span {
+  color: #373b53;
+}
+
+.container.light-mode main .main-content .status.draft .circle {
+  background-color: #373b53;
+}
+
+.container.light-mode main .main-content .status.pending {
+  background: rgba(255, 143, 0, 0.0571);
+}
+
+.container.light-mode main .main-content .status.paid {
+  background-color: rgba(51, 214, 159, 0.0571);
+}
+
+.container.light-mode main .main-content .invoices .invoice {
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+.container.light-mode main .main-content .invoices .invoice:hover {
+  border: 1px solid #7c5dfa;
+}
+
+.container.light-mode main .main-content .details .go-back {
+  color: #141625;
+}
+
+.container.light-mode main .main-content .details .container {
+  color: #141625;
+}
+
+.container.light-mode main .main-content .details .caption {
+  background-color: #fff;
+}
+
+.container.light-mode main .main-content .details .caption .buttons button:hover {
+  color: #141625;
+}
+
+.container.light-mode main .main-content .details .details-data {
+  background-color: #fff;
+}
+
+.container.light-mode main .main-content .details .details-data .items-data {
+  background: #f9fafe;
+}
+
+.container.light-mode main .main-content .details .details-data .items-data .amount-due {
+  background-color: #373b53;
+}
+
+.container.light-mode main .create-new-invoice {
+  background-color: #f8f8fb;
+}
+
+.container.light-mode main .create-new-invoice .new-invoice-form {
+  color: #141625;
+}
+
+.container.light-mode main .create-new-invoice .new-invoice-form input {
+  background-color: #dce0f6;
+  border: none;
+  color: #00083a;
+}
+
+.container.light-mode main .create-new-invoice .new-invoice-form .input {
+  background-color: #dce0f6;
+  border: none;
+  color: #00083a;
+}
+
+.container.light-mode main .create-new-invoice .new-invoice-form .select-term {
+  background-color: #dce0f6;
+  color: #00083a;
+  border: none;
+}
+
+.container.light-mode main .create-new-invoice .new-invoice-form .select-term .options-dropdwon {
+  background-color: #dce0f6;
+  border: .9px solid #d1d2d5;
+}
+
+.container.light-mode main .create-new-invoice .new-invoice-form .select-term .options-dropdwon .option:not(:last-child) {
+  border-bottom: 1px solid #d1d2d5;
+}
+
+.container.light-mode main .create-new-invoice .new-invoice-form .add-item {
+  background-color: #dce0f6;
+  color: #00083a;
+}
+
+.container.light-mode main .create-new-invoice .new-invoice-form .add-item svg {
+  fill: #00083a;
+}
+
+@media (max-width: 1439px) {
+  .container.light-mode header .profile-photo {
+    border-left: .9px solid #fff;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container.light-mode header .profile-photo {
+    border-top: .9px solid #fff;
   }
 }
 /*# sourceMappingURL=style.css.map */

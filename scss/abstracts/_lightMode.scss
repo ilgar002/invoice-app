@@ -1,0 +1,204 @@
+.container {
+    transition: all .3s ease;
+    color: #fff;
+
+    &.light-mode {
+        color: $clr-dark-background;
+
+        header {
+            background-color: #7c5dfa;
+
+            .logo {
+                background-color: #33D69F;
+
+                &::after {
+                    background-color: #78e7c1;
+                }
+            }
+
+            .theme-buttons {
+                svg {
+                    path {
+                        fill: #fff;
+                    }
+                }
+
+                .sun-icon {
+                    display: none;
+                }
+
+                .moon-icon {
+                    display: block;
+                }
+            }
+        }
+
+        main {
+            background-color: #f8f8fb;
+
+            .main-content {
+                .main-caption {
+                    .tools {
+                        .filter-status {
+                            .options-dropdown {
+                                background-color: #fff;
+
+                                .option {
+                                    .checkbox {
+                                        background-color: #dfe3fa;
+
+                                        &.active {
+                                            background-color: #7c5dfa;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .status {
+                    &.draft {
+                        background: rgba(55, 59, 83, .0571);
+
+                        span {
+                            color: #373b53;
+                        }
+
+                        .circle {
+                            background-color: #373b53;
+                        }
+                    }
+
+                    &.pending {
+                        background: rgba(255, 143, 0, .0571);
+                    }
+
+                    &.paid {
+                        background-color: rgba(51, 214, 159, .0571);
+                    }
+                }
+
+                .invoices {
+                    .invoice {
+                        background-color: #fff;
+                        border: 1px solid #fff;
+
+                        &:hover {
+                            border: 1px solid #7c5dfa;
+                        }
+
+
+                    }
+                }
+
+                .details {
+                    .go-back {
+                        color: $clr-dark-background;
+                    }
+
+                    .container {
+                        color: $clr-dark-background;
+                    }
+
+                    .caption {
+                        background-color: #fff;
+
+                        .buttons {
+                            button {
+                                &:hover {
+                                    // border: 1px solid red;
+                                    color: $clr-dark-background;
+                                }
+                            }
+                        }
+                    }
+
+                    .details-data {
+                        background-color: #fff;
+
+                        .items-data {
+                            background: #f9fafe;
+
+                            .amount-due {
+                                background-color: #373b53;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .create-new-invoice {
+                background-color: #f8f8fb;
+
+                .new-invoice-form {
+                    color: $clr-dark-background;
+
+                    input {
+                        background-color: #dce0f6;
+                        border: none;
+                        color: #00083a;
+                    }
+
+                    .input {
+                        background-color: #dce0f6;
+                        border: none;
+                        color: #00083a;
+                    }
+
+                    .select-term {
+                        background-color: #dce0f6;
+                        color: #00083a;
+                        border: none;
+
+                        .options-dropdwon {
+                            background-color: #dce0f6;
+                            border: .9px solid #d1d2d5;
+                            // border: 1px solid red;
+
+                            .option {
+
+                                &:not(:last-child) {
+                                    border-bottom: 1px solid #d1d2d5;
+                                }
+                            }
+                        }
+                    }
+
+                    .add-item {
+                        background-color: #dce0f6;
+                        color: #00083a;
+
+                        svg {
+                            fill: #00083a;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1439px) {
+    .container {
+        &.light-mode {
+            header {
+                .profile-photo {
+                    border-left: .9px solid #fff;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        &.light-mode {
+            header {
+                .profile-photo {
+                    border-top: .9px solid #fff;
+                }
+            }
+        }
+    }
+}
