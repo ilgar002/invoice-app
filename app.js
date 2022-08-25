@@ -1,3 +1,11 @@
+window.addEventListener('keydown', function (e) {
+    if (e.key == "Enter") {
+        e.preventDefault()
+    }
+})
+
+
+
 const urlParams = new URLSearchParams(window.location.search);
 const myParam = urlParams.get('id');
 // console.log(myParam);
@@ -166,11 +174,6 @@ if (myParam != null) {
     })
     const editBtn = details.querySelector('button.edit')
     editBtn.addEventListener('click', function () {
-        for (let i = 0; i < invoicesList.length; i++) {
-            if (invoicesList[i].id == myParam) {
-                const result = invoicesList[i]
-            }
-        }
         main.classList.add('open-invoice')
         document.addEventListener('click', (e) => {
             for (let i = 0; i < headerChi.length; i++) {
@@ -184,43 +187,46 @@ if (myParam != null) {
                 refreshForm()
             }
         })
-        // console.log(newInvoiceForm);
-        newInvoiceForm.querySelector('.from-street').value = result.from.street
-        newInvoiceForm.querySelector('.from-city').value = result.from.city
-        newInvoiceForm.querySelector('.from-postCode').value = result.from.postCode
-        newInvoiceForm.querySelector('.from-country').value = result.from.country
-        newInvoiceForm.querySelector('.client-name').value = result.to.clientName
-        newInvoiceForm.querySelector('.email-input').value = result.to.clientEmail
-        newInvoiceForm.querySelector('.to-street').value = result.to.street
-        newInvoiceForm.querySelector('.to-city').value = result.to.city
-        newInvoiceForm.querySelector('.to-postCode').value = result.to.postCode
-        newInvoiceForm.querySelector('.to-country').value = result.to.country
-        newInvoiceForm.querySelector('.today').innerText = result.invoiceDate
-        newInvoiceForm.querySelector('.today').innerText = result.invoiceDate
-        newInvoiceForm.querySelector('.select-term .current').innerText = result.paymentTerms
-        newInvoiceForm.querySelector('.project-description').value = result.description
-        const items = newInvoiceForm.querySelector('.items')
-        const itemHtml = newInvoiceForm.querySelector('.items .item').innerHTML
-
-        if (result.items.length > 1) {
-            for (let i = 1; i < result.items.length; i++) {
-                const item = document.createElement('div')
-                item.classList.add('item')
-                item.innerHTML = `${itemHtml}`
-                items.append(item)
-                deleteItemStatus = true;
-                deleteItem()
-                itemPrice(item)
+        for (let i = 0; i < invoicesList.length; i++) {
+            if (invoicesList[i].id == myParam) {
+                const result = invoicesList[i]
+                newInvoiceForm.querySelector('.from-street').value = result.from.street
+                newInvoiceForm.querySelector('.from-city').value = result.from.city
+                newInvoiceForm.querySelector('.from-postCode').value = result.from.postCode
+                newInvoiceForm.querySelector('.from-country').value = result.from.country
+                newInvoiceForm.querySelector('.client-name').value = result.to.clientName
+                newInvoiceForm.querySelector('.email-input').value = result.to.clientEmail
+                newInvoiceForm.querySelector('.to-street').value = result.to.street
+                newInvoiceForm.querySelector('.to-city').value = result.to.city
+                newInvoiceForm.querySelector('.to-postCode').value = result.to.postCode
+                newInvoiceForm.querySelector('.to-country').value = result.to.country
+                newInvoiceForm.querySelector('.today').innerText = result.invoiceDate
+                newInvoiceForm.querySelector('.today').innerText = result.invoiceDate
+                newInvoiceForm.querySelector('.select-term .current').innerText = result.paymentTerms
+                newInvoiceForm.querySelector('.project-description').value = result.description
+                const items = newInvoiceForm.querySelector('.items')
+                const itemHtml = newInvoiceForm.querySelector('.items .item').innerHTML
+                if (result.items.length > 1) {
+                    for (let i = 1; i < result.items.length; i++) {
+                        const item = document.createElement('div')
+                        item.classList.add('item')
+                        item.innerHTML = `${itemHtml}`
+                        items.append(item)
+                        deleteItemStatus = true;
+                        deleteItem()
+                        itemPrice(item)
+                    }
+                }
+                const allItem = newInvoiceForm.querySelectorAll('.item')
+                for (let i = 0; i < allItem.length; i++) {
+                    const allInput = allItem[i].querySelectorAll('input')
+                    const total = allItem[i].querySelector('.total')
+                    allInput[0].value = result.items[i].name
+                    allInput[1].value = result.items[i].quantity
+                    allInput[2].value = result.items[i].price
+                    total.innerText = result.items[i].total
+                }
             }
-        }
-        const allItem = newInvoiceForm.querySelectorAll('.item')
-        for (let i = 0; i < allItem.length; i++) {
-            const allInput = allItem[i].querySelectorAll('input')
-            const total = allItem[i].querySelector('.total')
-            allInput[0].value = result.items[i].name
-            allInput[1].value = result.items[i].quantity
-            allInput[2].value = result.items[i].price
-            total.innerText = result.items[i].total
         }
         newInvoiceForm.querySelector('.main-buttons').classList.add('hide')
         newInvoiceForm.querySelector('.edit-buttons').classList.add('show')
@@ -501,7 +507,6 @@ function createInvoice(id, date, clientName, totalAmount, status) {
     openDetails(newInvoice)
 }
 
-
 newInvoiceForm.addEventListener('submit', function (e) {
     e.preventDefault()
     validateInput()
@@ -731,6 +736,7 @@ cancelEdit.addEventListener('click', refreshForm)
 const saveChanges = newInvoiceForm.querySelector('.edit-buttons .save-changes')
 saveChanges.addEventListener('click', function () {
     const data = invoicesList.find(el => el.id == myParam)
+    // console.log(data);
     let amounts = newInvoiceForm.querySelectorAll('.total')
     let totalAmount = 0
     for (let i = 0; i < amounts.length; i++) {
@@ -770,27 +776,11 @@ saveChanges.addEventListener('click', function () {
         "status": data.status,
         "total": totalAmount
     }
+    // console.log(result);
     const index = invoicesList.indexOf(data)
     invoicesList[index] = result
-    mainContent.innerHTML = `<div class="details">
-                <button class="go-back">
-                    <img src="./images/icon-arrow-left.svg" alt="icon-arrow">
-                        <span>Go back</span>
-                </button>
-                <div class="caption">
-                    <div class="left container">
-                        <span>Status</span>
-                        <span class="status ${result.status}">
-                            <span class="circle"></span>
-                            <span class="text">${result.status.charAt(0).toUpperCase() + result.status.slice(1)}</span>
-                        </span>
-                    </div>
-                    <div class="buttons right container ${result.status}">
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                        <button class="pay">Mark as Paid</button>
-                    </div>
-                </div>
+    const detailsData = mainContent.querySelector('.details-data')
+    detailsData.innerHTML = `
                 <div class="details-data">
                     <div class="row">
                         <div class="xs-container">
@@ -885,6 +875,7 @@ saveChanges.addEventListener('click', function () {
                 </div>`
     }
     localStorage.setItem("invoices", JSON.stringify(invoicesList))
+    // console.log(invoicesList);
     refreshForm()
 })
 
