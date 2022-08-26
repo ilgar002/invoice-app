@@ -368,6 +368,8 @@ for (let i = 0; i < statusOptions?.length; i++) {
             const invoice = document.querySelectorAll('.invoice')
             console.log(invoice);
             document.querySelector('.invoice-number').innerText = `There are ${invoice.length} total invoices`
+            document.querySelector('.invoice-number.mobile').innerText = `${invoice.length} invoices`
+
         }
         else if (selected.length == 0) {
             getData()
@@ -918,8 +920,10 @@ saveChanges.addEventListener('click', function () {
 //number of invoice
 function countInvoice() {
     const invoiceNumber = document.querySelector('.invoice-number')
+    const invoiceNumberMobile = document.querySelector('.invoice-number.mobile')
     const noInvoiceMessage = document.querySelector('.no-invoice-message')
     invoiceNumber.innerText = `There are ${invoicesList.length} total invoices`
+    invoiceNumberMobile.innerText = `${invoicesList.length} invoices`
     if (invoicesList.length > 0) {
         noInvoiceMessage.style.display = 'none'
     }

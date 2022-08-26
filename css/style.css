@@ -1091,6 +1091,10 @@ main .main-content .main-caption .info .invoice-number {
   font-size: 0.75rem;
 }
 
+main .main-content .main-caption .info .invoice-number.mobile {
+  display: none;
+}
+
 main .main-content .main-caption .tools {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1115,6 +1119,10 @@ main .main-content .main-caption .tools .filter-status {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+main .main-content .main-caption .tools .filter-status .mobile-text {
+  display: none;
 }
 
 main .main-content .main-caption .tools .filter-status .options-dropdown {
@@ -1198,12 +1206,10 @@ main .main-content .main-caption .tools .new-invoice-btn {
   border: none;
   padding: 8px 10px;
   border-radius: 20px;
-  font-size: 1rem;
-  font-weight: 700;
   cursor: pointer;
 }
 
-main .main-content .main-caption .tools .new-invoice-btn span {
+main .main-content .main-caption .tools .new-invoice-btn span.plus-icon {
   background-color: #fff;
   width: 32px;
   height: 32px;
@@ -1217,6 +1223,11 @@ main .main-content .main-caption .tools .new-invoice-btn span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+main .main-content .main-caption .tools .new-invoice-btn span.text {
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 main .main-content .no-invoice-message {
@@ -1298,6 +1309,7 @@ main .main-content .invoices .invoice .id {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  white-space: nowrap;
 }
 
 main .main-content .invoices .invoice .id .hashtag {
@@ -1307,17 +1319,31 @@ main .main-content .invoices .invoice .id .hashtag {
 main .main-content .invoices .invoice .date {
   font-size: 0.9rem;
   font-weight: 400;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -webkit-box-flex: 1.5;
+      -ms-flex: 1.5;
+          flex: 1.5;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 main .main-content .invoices .invoice .client-name {
   font-size: 0.9rem;
   font-weight: 400;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -webkit-box-flex: 1.5;
+      -ms-flex: 1.5;
+          flex: 1.5;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 main .main-content .invoices .invoice .amount {
@@ -1327,6 +1353,13 @@ main .main-content .invoices .invoice .amount {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 main .main-content .invoices .invoice .status {
@@ -1346,6 +1379,9 @@ main .main-content .invoices .invoice .status {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
 }
 
 main .main-content .invoices .invoice .status .circle {
@@ -1496,6 +1532,107 @@ main .filter-layout {
   }
   main .main-content {
     padding: 56px 0;
+    min-width: 70%;
+  }
+}
+
+@media (max-width: 992px) {
+  main .main-content {
+    min-width: 85%;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 72px 20px 0 20px;
+  }
+  main .main-content {
+    min-width: 85%;
+  }
+  main .main-content .main-caption .tools .new-invoice-btn span.text span {
+    display: none;
+  }
+  main .main-content .invoices .invoice .id {
+    -webkit-box-ordinal-group: -4;
+        -ms-flex-order: -5;
+            order: -5;
+  }
+  main .main-content .invoices .invoice .date {
+    -webkit-box-ordinal-group: -2;
+        -ms-flex-order: -3;
+            order: -3;
+    min-width: 100%;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+  }
+  main .main-content .invoices .invoice .client-name {
+    -webkit-box-ordinal-group: -3;
+        -ms-flex-order: -4;
+            order: -4;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: end;
+  }
+  main .main-content .invoices .invoice .amount {
+    -webkit-box-ordinal-group: -1;
+        -ms-flex-order: -2;
+            order: -2;
+    min-width: 50%;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+  }
+  main .main-content .invoices .invoice .status {
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+  }
+}
+
+@media (max-width: 576px) {
+  main .main-content {
+    padding: 40px 0;
+  }
+  main .main-content .main-caption {
+    padding-bottom: 40px;
+  }
+  main .main-content .main-caption .info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    gap: 10px;
+  }
+  main .main-content .main-caption .info h1 {
+    font-size: 1.5rem;
+  }
+  main .main-content .main-caption .info .invoice-number {
+    display: none;
+  }
+  main .main-content .main-caption .info .invoice-number.mobile {
+    display: block;
+  }
+  main .main-content .main-caption .tools {
+    gap: 12px;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  main .main-content .main-caption .tools .filter-status .main-text {
+    display: none;
+  }
+  main .main-content .main-caption .tools .filter-status .mobile-text {
+    display: inline;
   }
 }
 

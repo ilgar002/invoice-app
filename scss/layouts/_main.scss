@@ -24,6 +24,10 @@ main {
                 .invoice-number {
                     font-size: 0.75rem;
                 }
+
+                .invoice-number.mobile {
+                    display: none;
+                }
             }
 
             .tools {
@@ -38,6 +42,10 @@ main {
                     cursor: pointer;
                     position: relative;
                     user-select: none;
+
+                    .mobile-text {
+                        display: none;
+                    }
 
                     .options-dropdown {
                         position: absolute;
@@ -109,28 +117,28 @@ main {
 
                 .new-invoice-btn {
                     background-color: $clr-purple;
-
                     color: #fff;
-
                     display: flex;
                     align-items: center;
                     gap: 12px;
                     border: none;
                     padding: 8px 10px;
                     border-radius: 20px;
-                    font-size: 1rem;
-                    font-weight: 700;
                     cursor: pointer;
 
-                    span {
+                    span.plus-icon {
                         background-color: #fff;
-
                         width: 32px;
                         height: 32px;
                         border-radius: 50%;
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                    }
+
+                    span.text {
+                        font-size: 1rem;
+                        font-weight: 700;
                     }
                 }
             }
@@ -195,6 +203,8 @@ main {
                     font-weight: 700;
                     font-size: 0.9rem;
                     flex: 1;
+                    white-space: nowrap;
+
 
                     .hashtag {
                         color: $clr-light-purple;
@@ -206,13 +216,19 @@ main {
                 .date {
                     font-size: 0.9rem;
                     font-weight: 400;
-                    flex: 1;
+                    flex: 1.5;
+                    white-space: nowrap;
+                    display: flex;
+                    justify-content: center;
                 }
 
                 .client-name {
                     font-size: 0.9rem;
                     font-weight: 400;
-                    flex: 1;
+                    flex: 1.5;
+                    white-space: nowrap;
+                    display: flex;
+                    justify-content: center;
                 }
 
                 .amount {
@@ -220,6 +236,9 @@ main {
                     font-size: 1.1rem;
                     letter-spacing: 1px;
                     flex: 1;
+                    white-space: nowrap;
+                    display: flex;
+                    justify-content: center;
                 }
 
                 .status {
@@ -231,6 +250,9 @@ main {
                     border-radius: 8px;
                     gap: 8px;
                     flex: 1;
+                    white-space: nowrap;
+                    display: flex;
+                    justify-content: center;
 
                     .circle {
                         width: 7px;
@@ -396,6 +418,113 @@ main {
 
         .main-content {
             padding: 56px 0;
+            min-width: 70%;
+        }
+    }
+}
+
+@media(max-width:992px) {
+    main {
+        .main-content {
+            min-width: 85%;
+        }
+    }
+}
+
+@media(max-width:768px) {
+    main {
+        padding: 72px 20px 0 20px;
+
+        .main-content {
+            min-width: 85%;
+
+            .main-caption {
+                .tools {
+
+                    .new-invoice-btn {
+                        span.text {
+                            span {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .invoices {
+                .invoice {
+                    .id {
+                        order: -5;
+                    }
+
+                    .date {
+                        order: -3;
+                        min-width: 100%;
+                        justify-content: start;
+                    }
+
+                    .client-name {
+                        order: -4;
+                        justify-content: end;
+                    }
+
+                    .amount {
+                        order: -2;
+                        min-width: 50%;
+                        justify-content: start;
+                    }
+
+                    .status {
+                        order: -1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:576px) {
+    main {
+        .main-content {
+            padding: 40px 0;
+
+            .main-caption {
+                padding-bottom: 40px;
+                .info {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+                    gap: 10px;
+
+                    h1 {
+                        font-size: 1.5rem;
+                    }
+
+                    .invoice-number {
+                        display: none;
+                    }
+
+                    .invoice-number.mobile {
+                        display: block;
+                    }
+                }
+
+                .tools {
+                    gap: 12px;
+                    flex: 1;
+                    justify-content: space-between;
+
+                    .filter-status {
+                        .main-text {
+                            display: none;
+                        }
+
+                        .mobile-text {
+                            display: inline;
+                        }
+                    }
+                }
+            }
         }
     }
 }
