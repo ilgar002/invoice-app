@@ -1755,6 +1755,10 @@ main .filter-layout {
   background-color: #373b53;
 }
 
+.container.light-mode main .main-content .no-invoice-message p, .container.light-mode main .main-content .no-invoice-message span {
+  color: #58595b;
+}
+
 .container.light-mode main .create-new-invoice {
   background-color: #f8f8fb;
 }
