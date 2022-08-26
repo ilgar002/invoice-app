@@ -3,8 +3,8 @@ window.addEventListener('keydown', function (e) {
         e.preventDefault()
     }
 })
-const container=document.querySelector('.container')
-const body=document.querySelector('body')
+const container = document.querySelector('.container')
+const body = document.querySelector('body')
 const themeButton = document.querySelector('.theme-buttons')
 // console.log(themeButton);
 
@@ -184,13 +184,13 @@ if (myParam != null) {
     const pay = details.querySelector('.pay')
     const pending = details.querySelector('.pending')
     const deleteInvoiceBtn = details.querySelector('.delete')
-    deleteInvoiceBtn.addEventListener('click', function () {
+    deleteInvoiceBtn.addEventListener('click', async function () {
         invoicesList.forEach((el, index) => {
             if (el.id == myParam) {
                 invoicesList.splice(index, 1)
             }
         })
-        localStorage.setItem('invoices', JSON.stringify(invoicesList))
+        await localStorage.setItem('invoices', JSON.stringify(invoicesList))
         history.back()
         countInvoice()
     })

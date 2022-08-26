@@ -134,7 +134,7 @@
                 transform: translateY(80%);
 
                 .option {
-                    
+
                     font-weight: 700;
                     font-size: .9rem;
                     padding: 16px 16px;
@@ -346,6 +346,18 @@ main {
         &.open-invoice {
             .create-new-invoice {
                 left: 0 !important;
+            }
+        }
+    }
+}
+
+@media(max-width:768px) {
+    .create-new-invoice {
+        width: 100%;
+
+        .new-invoice-form {
+            .xl-input-container {
+                flex-direction: column;
             }
         }
     }

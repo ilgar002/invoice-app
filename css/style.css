@@ -1047,6 +1047,18 @@ main.open-invoice .filter-layout {
   }
 }
 
+@media (max-width: 768px) {
+  .create-new-invoice {
+    width: 100%;
+  }
+  .create-new-invoice .new-invoice-form .xl-input-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 main {
   background-color: #141625;
   display: -webkit-box;
