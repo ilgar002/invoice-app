@@ -251,6 +251,8 @@
         .main-buttons {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
 
             button {
                 border: none;
@@ -269,7 +271,7 @@
 
             .draft {
                 background: #373b53;
-                margin-right: 10px;
+                // margin-right: 10px;
             }
 
             .save {

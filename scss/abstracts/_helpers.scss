@@ -6,7 +6,11 @@
 
 body {
     min-height: 100vh;
+    // width: 400px;
     font-family: Spartan, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     background-color: $clr-dark-background;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    // overflow: hidden;
+    // overflow-x: hidden;
 }

@@ -1,3 +1,11 @@
+window.addEventListener('DOMContentLoaded', (event) => {
+    itemPrice()
+    today()
+    countInvoice()
+});
+
+
+
 window.addEventListener('keydown', function (e) {
     if (e.key == "Enter") {
         e.preventDefault()
@@ -53,12 +61,9 @@ const newInvoiceForm = document.querySelector('.new-invoice-form')
 
 
 // getData()
-itemPrice()
-today()
-countInvoice()
+
 
 if (myParam != null) {
-    // mainContent.innerHTML=""
     const result = invoicesList.find((el) => {
         if (el.id == myParam) {
             return true
@@ -211,7 +216,7 @@ if (myParam != null) {
 
         closeIcon.addEventListener("click", () => {
             toast.classList.remove("active");
-
+            window.location = "?"
             setTimeout(() => {
                 progress.classList.remove("active");
             }, 300);
@@ -328,8 +333,6 @@ const createNewInvoice = document.querySelector('.create-new-invoice')
 const header = document.querySelector('header')
 const headerChi = header.querySelectorAll("header *")
 const layout = document.querySelector('.filter-layout')
-
-
 newInvoiceBtn?.addEventListener('click', () => {
     main.classList.add('open-invoice')
     document.addEventListener('click', (e) => {

@@ -162,6 +162,8 @@
 
 header {
   background-color: #252945;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -186,6 +188,8 @@ header .logo {
       -ms-flex-align: center;
           align-items: center;
   background-color: #7c5dfa;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
   border-bottom-right-radius: 20px;
 }
 
@@ -198,6 +202,8 @@ header .logo::after {
   height: 50%;
   width: 100%;
   background-color: #9277ff;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
   position: absolute;
   bottom: 0;
   border-top-left-radius: 20px;
@@ -292,11 +298,14 @@ header .theme-profile .profile-photo img {
             flex-direction: row;
     width: 100%;
     height: 72px;
+    width: 100vw;
   }
   header .logo {
     height: 72px;
     width: 72px;
     background-color: #7c5dfa;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
   }
   header .theme-profile .theme-buttons {
     -webkit-box-align: center;
@@ -320,7 +329,8 @@ body {
   min-height: 100vh;
   font-family: Spartan, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #141625;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .details {
@@ -346,8 +356,11 @@ body {
           align-items: center;
   gap: 16px;
   background-color: transparent;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   border: none;
   color: #fff;
+  transition: all .2s ease;
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
@@ -365,6 +378,8 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: #1e2139;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   padding: 32px;
   border-radius: 12px;
 }
@@ -390,11 +405,18 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 8px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .details .caption .buttons button {
   border: none;
   color: #fff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   padding: 0 24px;
   border-radius: 24px;
   height: 48px;
@@ -402,36 +424,50 @@ body {
   font-size: 0.85rem;
   letter-spacing: .25px;
   cursor: pointer;
-  -webkit-transition: all .2s ease;
   transition: all .2s ease;
 }
 
 .details .caption .buttons button.edit {
   background-color: #252945;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 .details .caption .buttons button.edit:hover {
   color: #252945;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   background-color: #fff;
+  transition: all .2s ease;
 }
 
 .details .caption .buttons button.delete {
   background-color: #ec5757;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 .details .caption .buttons button.delete:hover {
   color: #ec5757;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   background-color: #fff;
+  transition: all .2s ease;
 }
 
 .details .caption .buttons button.pay {
   background-color: #7c5dfa;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   display: none;
 }
 
 .details .caption .buttons button.pay:hover {
   color: #7c5dfa;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   background-color: #fff;
+  transition: all .2s ease;
 }
 
 .details .caption .buttons.pending .pay {
@@ -440,6 +476,8 @@ body {
 
 .details .details-data {
   background-color: #1e2139;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   padding: 32px;
   border-radius: 12px;
   display: -webkit-box;
@@ -481,6 +519,8 @@ body {
 
 .details .details-data .row .xs-container .id .hashtag {
   color: #7e88c3;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 .details .details-data .row .xs-container .p-decription {
@@ -558,6 +598,8 @@ body {
   padding-top: 32px;
   border-radius: 12px;
   background-color: #252945;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -598,7 +640,10 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: #0C0E16;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   color: #fff;
+  transition: all .2s ease;
   border-radius: 0 0 12px 12px;
   font-size: .9rem;
   font-weight: 300;
@@ -961,6 +1006,9 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
 }
 
 .create-new-invoice .new-invoice-form .main-buttons button {
@@ -980,7 +1028,6 @@ body {
 
 .create-new-invoice .new-invoice-form .main-buttons .draft {
   background: #373b53;
-  margin-right: 10px;
 }
 
 .create-new-invoice .new-invoice-form .main-buttons .save {
@@ -1062,6 +1109,8 @@ main.open-invoice .filter-layout {
 
 main {
   background-color: #141625;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1141,6 +1190,8 @@ main .main-content .main-caption .tools .filter-status .mobile-text {
 main .main-content .main-caption .tools .filter-status .options-dropdown {
   position: absolute;
   background-color: #252945;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   padding: 24px;
   top: 130%;
   right: 0;
@@ -1162,6 +1213,8 @@ main .main-content .main-caption .tools .filter-status .options-dropdown .option
   height: 16px;
   border-radius: 2px;
   background-color: #141625;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1183,6 +1236,8 @@ main .main-content .main-caption .tools .filter-status .options-dropdown .option
 
 main .main-content .main-caption .tools .filter-status .options-dropdown .option .checkbox.active {
   background-color: #7c5dfa;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .main-caption .tools .filter-status .options-dropdown .option:not(:last-child) {
@@ -1191,6 +1246,8 @@ main .main-content .main-caption .tools .filter-status .options-dropdown .option
 
 main .main-content .main-caption .tools .filter-status .options-dropdown .option:hover {
   color: #7c5dfa;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .main-caption .tools .filter-status .options-dropdown .option:hover .checkbox {
@@ -1208,7 +1265,10 @@ main .main-content .main-caption .tools .filter-status span {
 
 main .main-content .main-caption .tools .new-invoice-btn {
   background-color: #7c5dfa;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   color: #fff;
+  transition: all .2s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1224,6 +1284,8 @@ main .main-content .main-caption .tools .new-invoice-btn {
 
 main .main-content .main-caption .tools .new-invoice-btn span.plus-icon {
   background-color: #fff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -1257,6 +1319,8 @@ main .main-content .no-invoice-message {
       -ms-flex-align: center;
           align-items: center;
   color: #fff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .no-invoice-message img {
@@ -1277,6 +1341,8 @@ main .main-content .no-invoice-message span {
   letter-spacing: -.25px;
   text-align: center;
   color: #888eb0;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .no-invoice-message.show {
@@ -1298,6 +1364,8 @@ main .main-content .invoices {
 
 main .main-content .invoices .invoice {
   background-color: #1F2139;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
   border: 1px solid #1F2139;
   padding: 24px;
   line-height: 40px;
@@ -1327,6 +1395,8 @@ main .main-content .invoices .invoice .id {
 
 main .main-content .invoices .invoice .id .hashtag {
   color: #9277ff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .date {
@@ -1410,38 +1480,56 @@ main .main-content .invoices .invoice .status span {
 
 main .main-content .invoices .invoice .status.paid {
   background-color: #212B3F;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.paid .circle {
   background-color: #33D69F;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.paid span {
   color: #33D69F;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.pending {
   background-color: #ff8f000d;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.pending .circle {
   background-color: #ff8f00;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.pending span {
   color: #ff8f00;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.draft {
   background-color: #dfe3fa0f;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.draft .circle {
   background-color: #fff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.draft span {
   color: #fff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice:hover {
@@ -1480,38 +1568,56 @@ main .main-content .status span {
 
 main .main-content .status.paid {
   background-color: #212B3F;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .status.paid .circle {
   background-color: #33D69F;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .status.paid span {
   color: #33D69F;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .status.pending {
   background-color: #ff8f000d;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .status.pending .circle {
   background-color: #ff8f00;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .status.pending span {
   color: #ff8f00;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .status.draft {
   background-color: #dfe3fa0f;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .status.draft .circle {
   background-color: #fff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .main-content .status.draft span {
   color: #fff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 main .filter-layout {
@@ -1525,8 +1631,8 @@ main .filter-layout {
   background: rgba(0, 0, 0, 0.4984);
   border-top-left-radius: 220px;
   border-bottom-left-radius: 220px;
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 @media (min-width: 1440px) {
@@ -1819,15 +1925,13 @@ main .filter-layout {
 .toast {
   position: absolute;
   top: 90px;
-  right: 20px;
+  right: -300px;
   border-radius: 12px;
   background: #7c5dfa;
   padding: 22px 35px 22px 25px;
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  -webkit-transform: translateX(calc(100% + 30px));
-          transform: translateX(calc(100% + 30px));
   -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
   color: #fff;
@@ -1839,8 +1943,7 @@ main .filter-layout {
 }
 
 .toast.active {
-  -webkit-transform: translateX(0%);
-          transform: translateX(0%);
+  right: 20px;
 }
 
 .toast .close {

@@ -1,5 +1,6 @@
 header {
     background-color: $clr-primary;
+    transition: all .3s ease;
     display: flex;
     justify-content: space-between;
     position: fixed;
@@ -14,6 +15,7 @@ header {
         justify-content: center;
         align-items: center;
         background-color: $clr-purple;
+        transition: all .3s ease;
         border-bottom-right-radius: 20px;
 
         svg {
@@ -25,6 +27,7 @@ header {
             height: 50%;
             width: 100%;
             background-color: $clr-light-purple;
+            transition: all .3s ease;
             position: absolute;
             bottom: 0;
             border-top-left-radius: 20px;
@@ -100,11 +103,13 @@ header {
         flex-direction: row;
         width: 100%;
         height: 72px;
+        width: 100vw;
 
         .logo {
             height: 72px;
             width: 72px;
             background-color: $clr-purple;
+            transition: all .3s ease;
         }
 
         .theme-profile {

@@ -1,20 +1,21 @@
 .toast {
     position: absolute;
     top: 90px;
-    right: 20px;
+    // display: none;
+    right: -300px;
     border-radius: 12px;
     background: #7c5dfa;
     padding: 22px 35px 22px 25px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transform: translateX(calc(100% + 30px));
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
     color: #fff;
     user-select: none;
     z-index: 1000;
 
     &.active {
-        transform: translateX(0%);
+        // display: block;
+        right: 20px;
     }
 
     .close {
