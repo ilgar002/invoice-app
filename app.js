@@ -178,7 +178,7 @@ if (myParam != null) {
     }
     const goBack = document.querySelector('.go-back')
     goBack.addEventListener('click', function () {
-        history.back()
+        window.location="?"
     })
     const details = document.querySelector('.details')
     const pay = details.querySelector('.pay')
@@ -206,7 +206,7 @@ if (myParam != null) {
 
         timer2 = setTimeout(() => {
             progress.classList.remove("active");
-            history.back()
+            window.location="?"
         }, 3300);
 
         closeIcon.addEventListener("click", () => {
