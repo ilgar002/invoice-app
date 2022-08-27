@@ -1,0 +1,63 @@
+.toast {
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    border-radius: 12px;
+    background: #7c5dfa;
+    padding: 22px 35px 22px 25px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    color: #fff;
+    user-select: none;
+    z-index: 1000;
+
+    &.active {
+        transform: translateX(0%);
+    }
+
+    .close {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        padding: 5px;
+        cursor: pointer;
+        opacity: 0.7;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background: #ddd;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #9277FF;
+        }
+
+        &.active {
+            &::before {
+                animation: progress 3s linear forwards;
+            }
+        }
+    }
+}
+
+@keyframes progress {
+    100% {
+        right: 100%;
+    }
+}

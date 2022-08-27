@@ -184,14 +184,41 @@ if (myParam != null) {
     const pay = details.querySelector('.pay')
     const pending = details.querySelector('.pending')
     const deleteInvoiceBtn = details.querySelector('.delete')
+
+    const toast = document.querySelector(".toast");
+    const closeIcon = document.querySelector(".close");
+    const progress = document.querySelector(".progress");
+    let timer1, timer2;
+
     deleteInvoiceBtn.addEventListener('click', async function () {
         invoicesList.forEach((el, index) => {
             if (el.id == myParam) {
                 invoicesList.splice(index, 1)
             }
         })
-        await localStorage.setItem('invoices', JSON.stringify(invoicesList))
-        history.back()
+        localStorage.setItem('invoices', JSON.stringify(invoicesList))
+        toast.classList.add("active");
+        progress.classList.add("active");
+
+        timer1 = setTimeout(() => {
+            toast.classList.remove("active");
+        }, 3000);
+
+        timer2 = setTimeout(() => {
+            progress.classList.remove("active");
+            history.back()
+        }, 3300);
+
+        closeIcon.addEventListener("click", () => {
+            toast.classList.remove("active");
+
+            setTimeout(() => {
+                progress.classList.remove("active");
+            }, 300);
+
+            clearTimeout(timer1);
+            clearTimeout(timer2);
+        });
         countInvoice()
     })
     pay.addEventListener('click', function () {
