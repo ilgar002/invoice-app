@@ -515,11 +515,14 @@ main {
 
 @media(max-width:576px) {
     main {
+        padding: 72px 12px 0 12px;
+
         .main-content {
             padding: 40px 0;
 
             .main-caption {
                 padding-bottom: 40px;
+
                 .info {
                     display: flex;
                     flex-direction: column;

@@ -1,7 +1,6 @@
 .toast {
     position: absolute;
     top: 90px;
-    // display: none;
     right: -300px;
     border-radius: 12px;
     background: #7c5dfa;
@@ -14,7 +13,6 @@
     z-index: 1000;
 
     &.active {
-        // display: block;
         right: 20px;
     }
 
@@ -60,5 +58,11 @@
 @keyframes progress {
     100% {
         right: 100%;
+    }
+}
+
+@media (max-width:1339px){
+    .toast{
+        display: none;
     }
 }

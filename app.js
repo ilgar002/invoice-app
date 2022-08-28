@@ -1,7 +1,6 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     itemPrice()
     today()
-    countInvoice()
 });
 
 
@@ -132,7 +131,7 @@ if (myParam != null) {
                             </span>
                         </div>
                         <div class="xs-container">
-                            Bill To
+                            <span class="direction">Bill To</span>
                             <span class="name bold">
                                 ${result.to.clientName}
                             </span>
@@ -150,7 +149,7 @@ if (myParam != null) {
                             </span>
                         </div>
                         <div class="xs-container">
-                            Sent To
+                            <span class="direction">Sent To</span>
                             <div class="email bold">
                                 ${result.to.clientEmail}
                             </div>
@@ -183,7 +182,7 @@ if (myParam != null) {
     }
     const goBack = document.querySelector('.go-back')
     goBack.addEventListener('click', function () {
-        window.location="?"
+        window.location = "?"
     })
     const details = document.querySelector('.details')
     const pay = details.querySelector('.pay')
@@ -194,6 +193,7 @@ if (myParam != null) {
     const closeIcon = document.querySelector(".close");
     const progress = document.querySelector(".progress");
     let timer1, timer2;
+    console.log(toast.style.display);
 
     deleteInvoiceBtn.addEventListener('click', async function () {
         invoicesList.forEach((el, index) => {
@@ -202,28 +202,33 @@ if (myParam != null) {
             }
         })
         localStorage.setItem('invoices', JSON.stringify(invoicesList))
-        toast.classList.add("active");
-        progress.classList.add("active");
+        if (window.innerWidth > 1339) {
+            toast.classList.add("active");
+            progress.classList.add("active");
 
-        timer1 = setTimeout(() => {
-            toast.classList.remove("active");
-        }, 3000);
+            timer1 = setTimeout(() => {
+                toast.classList.remove("active");
+            }, 3000);
 
-        timer2 = setTimeout(() => {
-            progress.classList.remove("active");
-            window.location="?"
-        }, 3300);
-
-        closeIcon.addEventListener("click", () => {
-            toast.classList.remove("active");
-            window.location = "?"
-            setTimeout(() => {
+            timer2 = setTimeout(() => {
                 progress.classList.remove("active");
-            }, 300);
+                window.location = "?"
+            }, 3300);
 
-            clearTimeout(timer1);
-            clearTimeout(timer2);
-        });
+            closeIcon.addEventListener("click", () => {
+                toast.classList.remove("active");
+                window.location = "?"
+                setTimeout(() => {
+                    progress.classList.remove("active");
+                }, 300);
+
+                clearTimeout(timer1);
+                clearTimeout(timer2);
+            });
+        }
+        else {
+            window.location = "?"
+        }
         countInvoice()
     })
     pay.addEventListener('click', function () {
@@ -301,6 +306,7 @@ if (myParam != null) {
 }
 else {
     getData()
+    countInvoice()
 }
 
 

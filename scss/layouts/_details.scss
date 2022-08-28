@@ -55,42 +55,40 @@
                 font-size: 0.85rem;
                 letter-spacing: .25px;
                 cursor: pointer;
-                transition: all .2s ease;
 
                 &.edit {
                     background-color: $clr-primary;
-                    transition: all .2s ease;
+
 
                     &:hover {
                         color: $clr-primary ;
-                        transition: all .2s ease;
+
                         background-color: #fff;
-                        transition: all .2s ease;
                     }
                 }
 
                 &.delete {
                     background-color: #ec5757;
-                    transition: all .2s ease;
+
 
                     &:hover {
                         color: #ec5757;
-                        transition: all .2s ease;
+
                         background-color: #fff;
-                        transition: all .2s ease;
+
                     }
                 }
 
                 &.pay {
                     background-color: #7c5dfa;
-                    transition: all .2s ease;
+
                     display: none;
 
                     &:hover {
                         color: #7c5dfa;
-                        transition: all .2s ease;
+
                         background-color: #fff;
-                        transition: all .2s ease;
+
                     }
                 }
             }
@@ -206,9 +204,15 @@
                 padding: 0 32px;
 
                 span {
-                    flex: 1;
+                    flex: .5;
                     font-weight: 300;
                     font-size: .85rem;
+                    display: flex;
+                    justify-content: center;
+                    &:first-child {
+                            flex: 1;
+                            justify-content: start;
+                        }
                 }
             }
 
@@ -244,11 +248,58 @@
                 padding: 0 32px;
 
                 span {
-                    flex: 1;
+                    flex: .5;
                     font-size: .9rem;
                     font-weight: 600;
+                    display: flex;
+                        justify-content: center;
+                    &:first-child{
+                        flex: 1;
+                        justify-content: start;
+                    }
                 }
             }
         }
     }
+
+    .direction {
+        color: #7c5dfa;
+            font-weight: 600;
+    }
+}
+
+
+@media (max-width:576px) {
+    .details {
+        .caption {
+            flex-direction: column;
+            gap: 20px;
+            padding: 24px;
+
+            .buttons {
+                justify-content: center;
+
+                button {
+                    padding: 0 20px;
+                }
+            }
+        }
+
+        .details-data {
+            padding: 20px;
+            gap: 24px;
+
+            .row {
+                .bold {
+                    font-size: 1rem;
+                }
+
+                &:nth-child(2) {
+                    gap: 30px;
+                }
+            }
+        }
+
+    }
+
 }

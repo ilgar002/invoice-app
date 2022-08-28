@@ -107,9 +107,28 @@
                         .buttons {
                             button {
                                 &:hover {
-                                    // border: 1px solid red;
-                                    color: $clr-dark-background;
+                                    color: #fff;
+                                    opacity: 0.8;
                                 }
+
+                                &.edit {
+                                    &:hover {
+                                        background-color: #252945;
+                                    }
+                                }
+
+                                &.delete {
+                                    &:hover {
+                                        background-color: #ec5757;
+                                    }
+                                }
+
+                                &.pay {
+                                    &:hover {
+                                        background-color: #7c5dfa;
+                                    }
+                                }
+
                             }
                         }
                     }
@@ -126,8 +145,11 @@
                         }
                     }
                 }
-                .no-invoice-message{
-                    p,span{
+
+                .no-invoice-message {
+
+                    p,
+                    span {
                         color: #58595b;
                     }
                 }

@@ -424,50 +424,34 @@ body {
   font-size: 0.85rem;
   letter-spacing: .25px;
   cursor: pointer;
-  transition: all .2s ease;
 }
 
 .details .caption .buttons button.edit {
   background-color: #252945;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 .details .caption .buttons button.edit:hover {
   color: #252945;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   background-color: #fff;
-  transition: all .2s ease;
 }
 
 .details .caption .buttons button.delete {
   background-color: #ec5757;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 .details .caption .buttons button.delete:hover {
   color: #ec5757;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   background-color: #fff;
-  transition: all .2s ease;
 }
 
 .details .caption .buttons button.pay {
   background-color: #7c5dfa;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   display: none;
 }
 
 .details .caption .buttons button.pay:hover {
   color: #7c5dfa;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   background-color: #fff;
-  transition: all .2s ease;
 }
 
 .details .caption .buttons.pending .pay {
@@ -621,11 +605,26 @@ body {
 }
 
 .details .details-data .items-data .item-caption span {
+  -webkit-box-flex: .5;
+      -ms-flex: .5;
+          flex: .5;
+  font-weight: 300;
+  font-size: .85rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.details .details-data .items-data .item-caption span:first-child {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  font-weight: 300;
-  font-size: .85rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
 }
 
 .details .details-data .items-data .amount-due {
@@ -676,11 +675,60 @@ body {
 }
 
 .details .details-data .items-info .item-row span {
+  -webkit-box-flex: .5;
+      -ms-flex: .5;
+          flex: .5;
+  font-size: .9rem;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.details .details-data .items-info .item-row span:first-child {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  font-size: .9rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
+.details .direction {
+  color: #7c5dfa;
   font-weight: 600;
+}
+
+@media (max-width: 576px) {
+  .details .caption {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+  }
+  .details .caption .buttons {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .details .caption .buttons button {
+    padding: 0 20px;
+  }
+  .details .details-data {
+    padding: 20px;
+    gap: 24px;
+  }
+  .details .details-data .row .bold {
+    font-size: 1rem;
+  }
+  .details .details-data .row:nth-child(2) {
+    gap: 30px;
+  }
 }
 
 .create-new-invoice {
@@ -1098,12 +1146,22 @@ main.open-invoice .filter-layout {
 @media (max-width: 768px) {
   .create-new-invoice {
     width: 100%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
   }
   .create-new-invoice .new-invoice-form .xl-input-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .create-new-invoice .new-invoice-form .main-buttons button {
+    padding: 0 10px;
+    font-weight: 600;
+    font-size: .8rem;
   }
 }
 
@@ -1710,6 +1768,9 @@ main .filter-layout {
 }
 
 @media (max-width: 576px) {
+  main {
+    padding: 72px 12px 0 12px;
+  }
   main .main-content {
     padding: 40px 0;
   }
@@ -1847,7 +1908,20 @@ main .filter-layout {
 }
 
 .container.light-mode main .main-content .details .caption .buttons button:hover {
-  color: #141625;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.container.light-mode main .main-content .details .caption .buttons button.edit:hover {
+  background-color: #252945;
+}
+
+.container.light-mode main .main-content .details .caption .buttons button.delete:hover {
+  background-color: #ec5757;
+}
+
+.container.light-mode main .main-content .details .caption .buttons button.pay:hover {
+  background-color: #7c5dfa;
 }
 
 .container.light-mode main .main-content .details .details-data {
@@ -1862,7 +1936,8 @@ main .filter-layout {
   background-color: #373b53;
 }
 
-.container.light-mode main .main-content .no-invoice-message p, .container.light-mode main .main-content .no-invoice-message span {
+.container.light-mode main .main-content .no-invoice-message p,
+.container.light-mode main .main-content .no-invoice-message span {
   color: #58595b;
 }
 
@@ -1992,6 +2067,12 @@ main .filter-layout {
 @keyframes progress {
   100% {
     right: 100%;
+  }
+}
+
+@media (max-width: 1339px) {
+  .toast {
+    display: none;
   }
 }
 /*# sourceMappingURL=style.css.map */

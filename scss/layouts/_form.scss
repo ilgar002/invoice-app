@@ -356,11 +356,28 @@ main {
 @media(max-width:768px) {
     .create-new-invoice {
         width: 100%;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
 
         .new-invoice-form {
             .xl-input-container {
                 flex-direction: column;
             }
+        }
+    }
+}
+
+@media(max-width:576px){
+    .create-new-invoice{
+        .new-invoice-form{
+            .main-buttons {
+
+                    button {
+                        padding: 0 10px;
+                        font-weight: 600;
+                        font-size: .8rem;
+                    }
+                }
         }
     }
 }
