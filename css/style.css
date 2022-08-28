@@ -36,7 +36,7 @@
   bottom: 0;
   -webkit-transform: translateY(100%);
           transform: translateY(100%);
-  width: 40%;
+  min-width: 250px;
   padding: 8px;
   background-color: #1e2139;
   border: 1px solid #252945;
@@ -64,7 +64,7 @@
 .date-picker .ui-datepicker-next {
   width: 16px;
   height: 16px;
-  background: url(../images/icon-arrow-right.svg);
+  background: url("../images/icon-arrow-right.svg");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -77,7 +77,7 @@
   text-indent: 9999px;
 }
 
-.date-picker .ui-datepicker-prev:after {
+.date-picker .ui-datepicker-prev::after {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   margin: -43px 0px 0px 8px;
@@ -122,7 +122,7 @@
   background-color: #7c5dfa;
 }
 
-.ui-state-active {
+.date-picker .ui-state-active {
   background-color: #7c5dfa;
 }
 
@@ -356,11 +356,8 @@ body {
           align-items: center;
   gap: 16px;
   background-color: transparent;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   border: none;
   color: #fff;
-  transition: all .2s ease;
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
@@ -378,8 +375,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: #1e2139;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   padding: 32px;
   border-radius: 12px;
 }
@@ -415,8 +410,6 @@ body {
 .details .caption .buttons button {
   border: none;
   color: #fff;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   padding: 0 24px;
   border-radius: 24px;
   height: 48px;
@@ -460,8 +453,6 @@ body {
 
 .details .details-data {
   background-color: #1e2139;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   padding: 32px;
   border-radius: 12px;
   display: -webkit-box;
@@ -503,8 +494,6 @@ body {
 
 .details .details-data .row .xs-container .id .hashtag {
   color: #7e88c3;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 .details .details-data .row .xs-container .p-decription {
@@ -582,8 +571,6 @@ body {
   padding-top: 32px;
   border-radius: 12px;
   background-color: #252945;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -639,10 +626,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: #0C0E16;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   color: #fff;
-  transition: all .2s ease;
   border-radius: 0 0 12px 12px;
   font-size: .9rem;
   font-weight: 300;
@@ -781,12 +765,15 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .create-new-invoice .new-invoice-form .description small.alert {
   color: #ec5757;
   font-weight: 500;
   display: none;
+  white-space: nowrap;
 }
 
 .create-new-invoice .new-invoice-form input {
@@ -1167,8 +1154,8 @@ main.open-invoice .filter-layout {
 
 main {
   background-color: #141625;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
+  -webkit-transition: all .1s ease;
+  transition: all .1s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1248,8 +1235,6 @@ main .main-content .main-caption .tools .filter-status .mobile-text {
 main .main-content .main-caption .tools .filter-status .options-dropdown {
   position: absolute;
   background-color: #252945;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   padding: 24px;
   top: 130%;
   right: 0;
@@ -1271,8 +1256,6 @@ main .main-content .main-caption .tools .filter-status .options-dropdown .option
   height: 16px;
   border-radius: 2px;
   background-color: #141625;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1294,8 +1277,6 @@ main .main-content .main-caption .tools .filter-status .options-dropdown .option
 
 main .main-content .main-caption .tools .filter-status .options-dropdown .option .checkbox.active {
   background-color: #7c5dfa;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .main-caption .tools .filter-status .options-dropdown .option:not(:last-child) {
@@ -1304,8 +1285,6 @@ main .main-content .main-caption .tools .filter-status .options-dropdown .option
 
 main .main-content .main-caption .tools .filter-status .options-dropdown .option:hover {
   color: #7c5dfa;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .main-caption .tools .filter-status .options-dropdown .option:hover .checkbox {
@@ -1323,10 +1302,7 @@ main .main-content .main-caption .tools .filter-status span {
 
 main .main-content .main-caption .tools .new-invoice-btn {
   background-color: #7c5dfa;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   color: #fff;
-  transition: all .2s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1342,8 +1318,6 @@ main .main-content .main-caption .tools .new-invoice-btn {
 
 main .main-content .main-caption .tools .new-invoice-btn span.plus-icon {
   background-color: #fff;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -1377,8 +1351,6 @@ main .main-content .no-invoice-message {
       -ms-flex-align: center;
           align-items: center;
   color: #fff;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .no-invoice-message img {
@@ -1399,8 +1371,6 @@ main .main-content .no-invoice-message span {
   letter-spacing: -.25px;
   text-align: center;
   color: #888eb0;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .no-invoice-message.show {
@@ -1422,8 +1392,6 @@ main .main-content .invoices {
 
 main .main-content .invoices .invoice {
   background-color: #1F2139;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
   border: 1px solid #1F2139;
   padding: 24px;
   line-height: 40px;
@@ -1453,8 +1421,6 @@ main .main-content .invoices .invoice .id {
 
 main .main-content .invoices .invoice .id .hashtag {
   color: #9277ff;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .date {
@@ -1538,56 +1504,38 @@ main .main-content .invoices .invoice .status span {
 
 main .main-content .invoices .invoice .status.paid {
   background-color: #212B3F;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.paid .circle {
   background-color: #33D69F;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.paid span {
   color: #33D69F;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.pending {
   background-color: #ff8f000d;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.pending .circle {
   background-color: #ff8f00;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.pending span {
   color: #ff8f00;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.draft {
   background-color: #dfe3fa0f;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.draft .circle {
   background-color: #fff;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice .status.draft span {
   color: #fff;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .invoices .invoice:hover {
@@ -1626,56 +1574,38 @@ main .main-content .status span {
 
 main .main-content .status.paid {
   background-color: #212B3F;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .status.paid .circle {
   background-color: #33D69F;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .status.paid span {
   color: #33D69F;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .status.pending {
   background-color: #ff8f000d;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .status.pending .circle {
   background-color: #ff8f00;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .status.pending span {
   color: #ff8f00;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .status.draft {
   background-color: #dfe3fa0f;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .status.draft .circle {
   background-color: #fff;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .main-content .status.draft span {
   color: #fff;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 main .filter-layout {
@@ -1689,8 +1619,6 @@ main .filter-layout {
   background: rgba(0, 0, 0, 0.4984);
   border-top-left-radius: 220px;
   border-bottom-left-radius: 220px;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
 }
 
 @media (min-width: 1440px) {
@@ -1764,6 +1692,9 @@ main .filter-layout {
     -webkit-box-ordinal-group: 0;
         -ms-flex-order: -1;
             order: -1;
+  }
+  main .filter-layout {
+    display: none;
   }
 }
 

@@ -9,10 +9,8 @@
         align-items: center;
         gap: 16px;
         background-color: transparent;
-        transition: all .2s ease;
         border: none;
         color: #fff;
-        transition: all .2s ease;
         font-size: 0.9rem;
         font-weight: 700;
         cursor: pointer;
@@ -24,7 +22,6 @@
         justify-content: space-between;
         align-items: center;
         background-color: #1e2139;
-        transition: all .2s ease;
         padding: 32px;
         border-radius: 12px;
 
@@ -47,7 +44,6 @@
             button {
                 border: none;
                 color: #fff;
-                transition: all .2s ease;
                 padding: 0 24px;
                 border-radius: 24px;
                 height: 48px;
@@ -103,7 +99,6 @@
 
     .details-data {
         background-color: #1e2139;
-        transition: all .2s ease;
         padding: 32px;
         border-radius: 12px;
         display: flex;
@@ -127,7 +122,6 @@
 
                     .hashtag {
                         color: #7e88c3;
-                        transition: all .2s ease;
                     }
                 }
 
@@ -193,7 +187,6 @@
             padding-top: 32px;
             border-radius: 12px;
             background-color: #252945;
-            transition: all .2s ease;
             display: flex;
             flex-direction: column;
             gap: 30px;
@@ -222,9 +215,7 @@
                 justify-content: space-between;
                 align-items: center;
                 background-color: #0C0E16;
-                transition: all .2s ease;
                 color: #fff;
-                transition: all .2s ease;
                 border-radius: 0 0 12px 12px;
                 font-size: .9rem;
                 font-weight: 300;

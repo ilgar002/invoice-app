@@ -1,7 +1,6 @@
 main {
     background-color: $clr-dark-background;
-    transition: all .2s ease;
-
+    transition: all .1s ease;
     display: flex;
     justify-content: center;
     min-height: 100vh;
@@ -51,7 +50,7 @@ main {
                     .options-dropdown {
                         position: absolute;
                         background-color: $clr-primary;
-                        transition: all .2s ease;
+
 
                         padding: 24px;
                         top: 130%;
@@ -68,7 +67,7 @@ main {
                                 height: 16px;
                                 border-radius: 2px;
                                 background-color: $clr-dark-background;
-                                transition: all .2s ease;
+
 
                                 display: flex;
                                 align-items: center;
@@ -85,7 +84,7 @@ main {
 
                                 &.active {
                                     background-color: $clr-purple;
-                                    transition: all .2s ease;
+
 
                                 }
                             }
@@ -100,7 +99,7 @@ main {
 
                             &:hover {
                                 color: $clr-purple;
-                                transition: all .2s ease;
+
 
 
                                 .checkbox {
@@ -122,9 +121,9 @@ main {
 
                 .new-invoice-btn {
                     background-color: $clr-purple;
-                    transition: all .2s ease;
+
                     color: #fff;
-                    transition: all .2s ease;
+
                     display: flex;
                     align-items: center;
                     gap: 12px;
@@ -135,7 +134,7 @@ main {
 
                     span.plus-icon {
                         background-color: #fff;
-                        transition: all .2s ease;
+
                         width: 32px;
                         height: 32px;
                         border-radius: 50%;
@@ -159,7 +158,7 @@ main {
             flex-direction: column;
             align-items: center;
             color: #fff;
-            transition: all .2s ease;
+
 
 
 
@@ -181,7 +180,7 @@ main {
                 letter-spacing: -.25px;
                 text-align: center;
                 color: #888eb0;
-                transition: all .2s ease;
+
 
             }
 
@@ -197,7 +196,7 @@ main {
 
             .invoice {
                 background-color: #1F2139;
-                transition: all .2s ease;
+
 
                 border: 1px solid #1F2139;
                 padding: 24px;
@@ -219,7 +218,7 @@ main {
 
                     .hashtag {
                         color: $clr-light-purple;
-                        transition: all .2s ease;
+
 
                     }
 
@@ -279,54 +278,54 @@ main {
 
                     &.paid {
                         background-color: #212B3F;
-                        transition: all .2s ease;
+
 
 
                         .circle {
                             background-color: #33D69F;
-                            transition: all .2s ease;
+
 
                         }
 
                         span {
                             color: #33D69F;
-                            transition: all .2s ease;
+
 
                         }
                     }
 
                     &.pending {
                         background-color: #ff8f000d;
-                        transition: all .2s ease;
+
 
 
                         .circle {
                             background-color: #ff8f00;
-                            transition: all .2s ease;
+
 
                         }
 
                         span {
                             color: #ff8f00;
-                            transition: all .2s ease;
+
 
                         }
                     }
 
                     &.draft {
                         background-color: #dfe3fa0f;
-                        transition: all .2s ease;
+
 
 
                         .circle {
                             background-color: #fff;
-                            transition: all .2s ease;
+
 
                         }
 
                         span {
                             color: #fff;
-                            transition: all .2s ease;
+
 
                         }
                     }
@@ -362,54 +361,54 @@ main {
 
             &.paid {
                 background-color: #212B3F;
-                transition: all .2s ease;
+
 
 
                 .circle {
                     background-color: #33D69F;
-                    transition: all .2s ease;
+
 
                 }
 
                 span {
                     color: #33D69F;
-                    transition: all .2s ease;
+
 
                 }
             }
 
             &.pending {
                 background-color: #ff8f000d;
-                transition: all .2s ease;
+
 
 
                 .circle {
                     background-color: #ff8f00;
-                    transition: all .2s ease;
+
 
                 }
 
                 span {
                     color: #ff8f00;
-                    transition: all .2s ease;
+
 
                 }
             }
 
             &.draft {
                 background-color: #dfe3fa0f;
-                transition: all .2s ease;
+
 
 
                 .circle {
                     background-color: #fff;
-                    transition: all .2s ease;
+
 
                 }
 
                 span {
                     color: #fff;
-                    transition: all .2s ease;
+
 
                 }
             }
@@ -427,7 +426,7 @@ main {
         background: rgba(0, 0, 0, .4984);
         border-top-left-radius: 220px;
         border-bottom-left-radius: 220px;
-        transition: all .2s ease;
+
     }
 }
 
@@ -509,6 +508,10 @@ main {
                     }
                 }
             }
+        }
+
+        .filter-layout {
+            display: none;
         }
     }
 }

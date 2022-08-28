@@ -34,11 +34,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
 
             small.alert {
                 color: #ec5757;
                 font-weight: 500;
                 display: none;
+                white-space: nowrap;
             }
         }
 
