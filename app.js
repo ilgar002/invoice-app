@@ -61,6 +61,34 @@ const newInvoiceForm = document.querySelector('.new-invoice-form')
 
 // getData()
 
+const toast = document.querySelector(".toast");
+const closeIcon = document.querySelector(".close");
+const progress = document.querySelector(".progress");
+
+function showToast(message) {
+    toast.querySelector('.message').innerText = message
+    if (window.innerWidth > 1339) {
+        toast.classList.add("active");
+        progress.classList.add("active");
+        timer1 = setTimeout(() => {
+            toast.classList.remove("active");
+        }, 3000);
+
+        timer2 = setTimeout(() => {
+            progress.classList.remove("active");
+        }, 3300);
+
+        closeIcon.addEventListener("click", () => {
+            toast.classList.remove("active");
+            setTimeout(() => {
+                progress.classList.remove("active");
+            }, 300);
+
+            clearTimeout(timer1);
+            clearTimeout(timer2);
+        });
+    }
+}
 
 if (myParam != null) {
     const result = invoicesList.find((el) => {
@@ -186,14 +214,9 @@ if (myParam != null) {
     })
     const details = document.querySelector('.details')
     const pay = details.querySelector('.pay')
-    const pending = details.querySelector('.pending')
     const deleteInvoiceBtn = details.querySelector('.delete')
 
-    const toast = document.querySelector(".toast");
-    const closeIcon = document.querySelector(".close");
-    const progress = document.querySelector(".progress");
     let timer1, timer2;
-    console.log(toast.style.display);
 
     deleteInvoiceBtn.addEventListener('click', async function () {
         invoicesList.forEach((el, index) => {
@@ -232,6 +255,7 @@ if (myParam != null) {
         countInvoice()
     })
     pay.addEventListener('click', function () {
+        const pending = details.querySelector('.pending')
         pay.remove()
         pending.classList.remove("pending")
         pending.classList.add('paid')
@@ -242,6 +266,7 @@ if (myParam != null) {
             }
         })
         localStorage.setItem('invoices', JSON.stringify(invoicesList))
+        showToast("Invoice successfully paid")
 
     })
     const editBtn = details.querySelector('button.edit')
@@ -732,6 +757,15 @@ function validateItem() {
     }
 }
 
+function validateForm() {
+    if (validateInput() && validateEmail() && validateItem()) {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
 
 
 //invoice form discard button
@@ -809,7 +843,48 @@ cancelEdit.addEventListener('click', refreshForm)
 const saveChanges = newInvoiceForm.querySelector('.edit-buttons .save-changes')
 saveChanges.addEventListener('click', function () {
     const data = invoicesList.find(el => el.id == myParam)
-    // console.log(data);
+    ///////////////
+    let status;
+    if (validateForm()) {
+        if (data.status != "paid") {
+            status = "pending"
+        }
+        else if (data.status == "paid") {
+            status = 'paid'
+
+        }
+    }
+    else {
+        if (data.status != 'paid') {
+            status = "draft"
+        }
+        else {
+            return;
+        }
+    }
+
+    // const status = validateForm() ? "pending" : "draft";
+    const statusArea = document.querySelector('.status')
+    statusArea.querySelector(".text").innerText = `${status.charAt(0).toUpperCase() + status.slice(1)}`
+    if (status == "pending") {
+        statusArea.classList.remove("draft")
+        statusArea.classList.add(status)
+        document.querySelector(".buttons").classList.add("pending")
+        document.querySelector(".buttons").classList.remove("draft")
+    }
+    else if (status == "draft") {
+        statusArea.classList.add("draft")
+        statusArea.classList.remove("pending")
+        document.querySelector(".buttons").classList.remove("pending")
+        document.querySelector(".buttons").classList.add("draft")
+    }
+    else if (status == 'paid') {
+        statusArea.classList.remove("pending")
+        statusArea.classList.add(status)
+        document.querySelector(".buttons").classList.add("paid")
+        document.querySelector(".buttons").classList.remove("pending")
+    }
+    console.log(`this ${data.status}`);
     let amounts = newInvoiceForm.querySelectorAll('.total')
     let totalAmount = 0
     for (let i = 0; i < amounts.length; i++) {
@@ -846,15 +921,13 @@ saveChanges.addEventListener('click', function () {
         "paymentTerms": newInvoiceForm.querySelector('.current.option').innerText,
         "description": newInvoiceForm.querySelector('.project-description').value,
         'items': itemList,
-        "status": data.status,
+        "status": status,
         "total": totalAmount
     }
-    // console.log(result);
     const index = invoicesList.indexOf(data)
     invoicesList[index] = result
     const detailsData = mainContent.querySelector('.details-data')
     detailsData.innerHTML = `
-                <div class="details-data">
                     <div class="row">
                         <div class="xs-container">
                             <span class="id">
@@ -898,7 +971,7 @@ saveChanges.addEventListener('click', function () {
                             </span>
                         </div>
                         <div class="xs-container">
-                            Bill To
+                            <span class="direction">Bill To</span>
                             <span class="name bold">
                                 ${result.to.clientName}
                             </span>
@@ -916,7 +989,7 @@ saveChanges.addEventListener('click', function () {
                             </span>
                         </div>
                         <div class="xs-container">
-                            Sent To
+                            <span class="direction">Sent To</span>
                             <div class="email bold">
                                 ${result.to.clientEmail}
                             </div>
@@ -935,8 +1008,7 @@ saveChanges.addEventListener('click', function () {
                             <span class="total">$${result.total}</span>
                         </div>
                     </div>
-                </div>
-            </div>`
+                </div>`
     const items = document.querySelector('.items-info')
     for (let i = 0; i < result.items.length; i++) {
         items.innerHTML +=
@@ -948,8 +1020,8 @@ saveChanges.addEventListener('click', function () {
                 </div>`
     }
     localStorage.setItem("invoices", JSON.stringify(invoicesList))
-    // console.log(invoicesList);
     refreshForm()
+    showToast('Invoice successfully edited')
 })
 
 
