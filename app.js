@@ -37,11 +37,14 @@ themeButton.addEventListener("click", function () {
     if (localStorage.getItem('mode') == 'dark') {
         body.style.backgroundColor = "#f8f8fb"
         container.classList.add('light-mode')
+        
         localStorage.setItem('mode', 'light')
     }
     else if (localStorage.getItem('mode') == 'light') {
         body.style.backgroundColor = "#141625"
+
         container.classList.remove('light-mode')
+
         localStorage.setItem('mode', 'dark')
     }
 })
@@ -214,7 +217,9 @@ if (myParam != null) {
         window.location = "?"
     })
     const details = document.querySelector('.details')
+
     const pay = details.querySelector('.pay')
+
     const deleteInvoiceBtn = details.querySelector('.delete')
 
     let timer1, timer2;
@@ -257,9 +262,13 @@ if (myParam != null) {
     })
     pay.addEventListener('click', function () {
         const pending = details.querySelector('.pending')
+
         pay.remove()
+
         pending.classList.remove("pending")
+
         pending.classList.add('paid')
+
         pending.querySelector('.text').innerText = "Paid"
         invoicesList.map((el) => {
             if (el.id == myParam) {
@@ -287,7 +296,9 @@ if (myParam != null) {
         })
         for (let i = 0; i < invoicesList.length; i++) {
             if (invoicesList[i].id == myParam) {
+
                 const result = invoicesList[i]
+
                 newInvoiceForm.querySelector('.from-street').value = result.from.street
                 newInvoiceForm.querySelector('.from-city').value = result.from.city
                 newInvoiceForm.querySelector('.from-postCode').value = result.from.postCode
@@ -315,7 +326,9 @@ if (myParam != null) {
                         itemPrice(item)
                     }
                 }
+
                 const allItem = newInvoiceForm.querySelectorAll('.item')
+
                 for (let i = 0; i < allItem.length; i++) {
                     const allInput = allItem[i].querySelectorAll('input')
                     const total = allItem[i].querySelector('.total')
@@ -353,11 +366,15 @@ $(function () {
     $(".calendar").on("change", function () {
         var $me = $(this),
             $selected = $me.val(),
+
             $parent = $me.parents('.date-picker');
+            
         $parent.find('.result').children('span').html($selected);
+
         calendar.classList.remove('show')
     });
 });
+
 
 //open new invoice area
 const newInvoiceBtn = document.querySelector('.new-invoice-btn')
@@ -396,6 +413,7 @@ selectTerm.addEventListener("click", function (e) {
         const clickedArea = e.composedPath();
         if (!clickedArea.includes(selectTerm)) {
             termDropdown.classList.remove("show")
+            
             termArrow.classList.remove('rotate-180')
         }
     })
@@ -411,8 +429,11 @@ statusFilter?.addEventListener('click', function (params) {
 for (let i = 0; i < statusOptions?.length; i++) {
     statusOptions[i].addEventListener('click', function () {
         statusOptions[i].querySelector("svg").classList.toggle("show")
+
         statusOptions[i].querySelector('.checkbox').classList.toggle('active')
+
         statusOptions[i].classList.toggle('current')
+
         invoices.innerHTML = ''
         const selected = []
         for (let i = 0; i < statusOptions.length; i++) {
@@ -428,6 +449,7 @@ for (let i = 0; i < statusOptions?.length; i++) {
             }
             const invoice = document.querySelectorAll('.invoice')
             document.querySelector('.invoice-number').innerText = `There are ${invoice.length} total invoices`
+
             document.querySelector('.invoice-number.mobile').innerText = `${invoice.length} invoices`
 
         }
@@ -445,10 +467,15 @@ for (let i = 0; i < statusOptions?.length; i++) {
 }
 
 const datePicker = document.querySelector('.date-picker')
+
 const dateInput = datePicker.querySelector('.input.result')
+
 const calendar = datePicker.querySelector('.calendar')
+
 dateInput.addEventListener('click', function (params) {
+
     calendar.classList.toggle('show')
+
     document.addEventListener('click', (e) => {
         const clickedArea = e.composedPath();
         if (!clickedArea.includes(datePicker)) {
@@ -497,8 +524,11 @@ addItem.addEventListener('click', () => {
 
 
     items.append(item)
+
     deleteItemStatus = true;
+
     deleteItem()
+
     itemPrice(item)
 })
 
@@ -506,8 +536,11 @@ addItem.addEventListener('click', () => {
 let deleteItemStatus = true;
 //delete item
 function deleteItem() {
+
     const deleteItemBtn = items.querySelectorAll('.delete-item')
+
     let limit = deleteItemBtn.length
+
     for (let i = 0; i < deleteItemBtn.length; i++) {
         deleteItemBtn[i].addEventListener('click', function () {
             if (limit > 1 && deleteItemStatus) {
@@ -548,7 +581,7 @@ function countItemTotal(qnt, price, total) {
     price.addEventListener('input', () => {
         validateItem()
         if (price.value != '') {
-            
+
             price.parentElement.querySelector('.empty-alert').style.display = 'none'
         }
         else {
@@ -789,7 +822,7 @@ discardBtn.addEventListener('click', function () {
 function today() {
     var date = new Date();
     const day = date.getDate()
-    
+
     const month = date.toLocaleString('default', { month: 'short' })
     const year = date.getFullYear()
     const today = `${day} ${month} ${year}`
