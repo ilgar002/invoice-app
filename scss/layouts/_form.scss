@@ -273,7 +273,6 @@
 
             .draft {
                 background: #373b53;
-                // margin-right: 10px;
             }
 
             .save {
@@ -369,17 +368,17 @@ main {
     }
 }
 
-@media(max-width:576px){
-    .create-new-invoice{
-        .new-invoice-form{
+@media(max-width:576px) {
+    .create-new-invoice {
+        .new-invoice-form {
             .main-buttons {
 
-                    button {
-                        padding: 0 10px;
-                        font-weight: 600;
-                        font-size: .8rem;
-                    }
+                button {
+                    padding: 0 10px;
+                    font-weight: 600;
+                    font-size: .8rem;
                 }
+            }
         }
     }
 }
