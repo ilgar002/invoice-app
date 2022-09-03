@@ -548,13 +548,16 @@ function countItemTotal(qnt, price, total) {
     price.addEventListener('input', () => {
         validateItem()
         if (price.value != '') {
+            
             price.parentElement.querySelector('.empty-alert').style.display = 'none'
         }
         else {
+
             price.parentElement.querySelector('.empty-alert').style.display = 'block'
         }
         total.innerText = `${qnt.value * price.value}`
         if (Number(total.innerText) <= 0 || isNaN(total.innerText)) {
+
             total.innerText = "Sorry"
         }
     })
@@ -677,11 +680,14 @@ function validateInput() {
     for (let i = 0; i < invoiceFormInputs.length; i++) {
         if (invoiceFormInputs[i].value != "") {
             const alert = invoiceFormInputs[i].previousElementSibling.querySelector('.empty-alert')
+
             alert.style.display = "none"
         }
         else if (invoiceFormInputs[i].value == "") {
             const alert = invoiceFormInputs[i].previousElementSibling.querySelector('.empty-alert')
+
             alert.style.display = "block"
+
             status++
         }
     }
@@ -696,8 +702,11 @@ function validateInput() {
 }
 function validateEmail() {
     const emailInput = newInvoiceForm.querySelector('.email-input')
+
     const mailformat = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
     if (emailInput.value.match(mailformat)) {
+
         emailInput.previousElementSibling.querySelector('.invalid-email').style.display = "none"
 
         return true
@@ -705,6 +714,7 @@ function validateEmail() {
     else {
         if (emailInput.value == "") {
             emailInput.previousElementSibling.querySelector('.empty-alert').style.display = "block"
+
             emailInput.previousElementSibling.querySelector('.invalid-email').style.display = "none"
         }
         else {
@@ -722,6 +732,7 @@ function validateItem() {
         if (quantity[i].value != "") {
             if (!(quantity[i].value > 0 && quantity[i].value % 1 == 0)) {
                 quantity[i].previousElementSibling.querySelector(".number-alert").style.display = "block"
+
                 status++
             }
             else {
@@ -778,6 +789,7 @@ discardBtn.addEventListener('click', function () {
 function today() {
     var date = new Date();
     const day = date.getDate()
+    
     const month = date.toLocaleString('default', { month: 'short' })
     const year = date.getFullYear()
     const today = `${day} ${month} ${year}`
@@ -789,9 +801,13 @@ function paymentDue(invoiceDate, paymentTerms) {
     const term = paymentTerms.split(' ')[1]
     let date = new Date(invoiceDate).setDate(new Date(invoiceDate).getDate() + parseInt(term))
     date = new Date(date)
+
     date = date.toDateString('default', { month: 'short' });
+
     date = date.split(' ')
+
     date = `${date[2] + ' ' + date[1] + ' ' + date[3]}`
+
     return date
 }
 
@@ -806,7 +822,9 @@ function refreshForm() {
     for (let i = 0; i < allAlerts.length; i++) {
         allAlerts[i].style.display = "none"
     }
+
     const items = newInvoiceForm.querySelectorAll('.item')
+
     let limit = items.length
     for (let i = 0; i < items.length; i++) {
         if (limit > 1) {
@@ -819,15 +837,20 @@ function refreshForm() {
     today()
     const total = newInvoiceForm.querySelector('.total')
     newInvoiceForm.querySelector('.select-term .current.option').innerText = 'Net 7 days'
+
     total.innerText = '0.00'
+
     const quantity = newInvoiceForm.querySelector('.quantity')
+
     quantity.value = "1"
+
     main.classList.remove('open-invoice')
 }
 
 function openDetails(invoice) {
     invoice.addEventListener('click', function () {
         const id = this.getAttribute('data-id')
+
         window.location = `?id=${id}`
     })
 }
@@ -1013,7 +1036,9 @@ saveChanges.addEventListener('click', function () {
                 </div>`
     }
     localStorage.setItem("invoices", JSON.stringify(invoicesList))
+
     refreshForm()
+
     showToast('Invoice successfully edited')
 })
 
@@ -1021,9 +1046,13 @@ saveChanges.addEventListener('click', function () {
 //number of invoice
 function countInvoice() {
     const invoiceNumber = document.querySelector('.invoice-number')
+
     const invoiceNumberMobile = document.querySelector('.invoice-number.mobile')
+
     const noInvoiceMessage = document.querySelector('.no-invoice-message')
+
     invoiceNumber.innerText = `There are ${invoicesList.length} total invoices`
+
     invoiceNumberMobile.innerText = `${invoicesList.length} invoices`
     if (invoicesList.length > 0) {
         noInvoiceMessage.style.display = 'none'
