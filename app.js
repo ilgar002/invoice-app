@@ -13,7 +13,7 @@ window.addEventListener('keydown', function (e) {
 const container = document.querySelector('.container')
 const body = document.querySelector('body')
 const themeButton = document.querySelector('.theme-buttons')
-// console.log(themeButton);
+
 
 //theme
 if (localStorage.getItem('mode') === null) {
@@ -50,7 +50,7 @@ themeButton.addEventListener("click", function () {
 
 const urlParams = new URLSearchParams(window.location.search);
 const myParam = urlParams.get('id');
-// console.log(myParam);
+
 
 const invoicesList = localStorage.getItem("invoices") ? JSON.parse(localStorage.getItem("invoices")) : [];
 const main = document.querySelector('main')
@@ -59,7 +59,7 @@ const invoices = document.querySelector('.invoices')
 const newInvoiceForm = document.querySelector('.new-invoice-form')
 
 
-// getData()
+
 
 const toast = document.querySelector(".toast");
 const closeIcon = document.querySelector(".close");
@@ -208,6 +208,7 @@ if (myParam != null) {
                     <span class="total">${result.items[i].total}</span>
                 </div>`
     }
+    itemPrice(document.querySelector('.item'))
     const goBack = document.querySelector('.go-back')
     goBack.addEventListener('click', function () {
         window.location = "?"
@@ -419,7 +420,6 @@ for (let i = 0; i < statusOptions?.length; i++) {
                 selected.push(statusOptions[i].innerText.toLowerCase())
             }
         }
-        console.log(selected);
         if (selected.length > 0) {
             for (let i = 0; i < invoicesList.length; i++) {
                 if (selected.includes(invoicesList[i].status)) {
@@ -427,7 +427,6 @@ for (let i = 0; i < statusOptions?.length; i++) {
                 }
             }
             const invoice = document.querySelectorAll('.invoice')
-            console.log(invoice);
             document.querySelector('.invoice-number').innerText = `There are ${invoice.length} total invoices`
             document.querySelector('.invoice-number.mobile').innerText = `${invoice.length} invoices`
 
@@ -687,11 +686,11 @@ function validateInput() {
         }
     }
     if (status > 0) {
-        console.log("empty-false");
+
         return false
     }
     else if (status == 0) {
-        console.log("emtpy-true");
+
         return true
     }
 }
@@ -700,7 +699,7 @@ function validateEmail() {
     const mailformat = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     if (emailInput.value.match(mailformat)) {
         emailInput.previousElementSibling.querySelector('.invalid-email').style.display = "none"
-        console.log("email-true");
+
         return true
     }
     else {
@@ -711,7 +710,7 @@ function validateEmail() {
         else {
             emailInput.previousElementSibling.querySelector('.invalid-email').style.display = "block"
         }
-        console.log("email-false");
+
         return false
     }
 }
@@ -748,11 +747,9 @@ function validateItem() {
         }
     }
     if (status > 0) {
-        console.log("item-false");
         return false
     }
     else if (status == 0) {
-        console.log("item-true");
         return true
     }
 }
@@ -843,7 +840,6 @@ cancelEdit.addEventListener('click', refreshForm)
 const saveChanges = newInvoiceForm.querySelector('.edit-buttons .save-changes')
 saveChanges.addEventListener('click', function () {
     const data = invoicesList.find(el => el.id == myParam)
-    ///////////////
     let status;
     if (validateForm()) {
         if (data.status != "paid") {
@@ -862,8 +858,6 @@ saveChanges.addEventListener('click', function () {
             return;
         }
     }
-
-    // const status = validateForm() ? "pending" : "draft";
     const statusArea = document.querySelector('.status')
     statusArea.querySelector(".text").innerText = `${status.charAt(0).toUpperCase() + status.slice(1)}`
     if (status == "pending") {
@@ -884,7 +878,6 @@ saveChanges.addEventListener('click', function () {
         document.querySelector(".buttons").classList.add("paid")
         document.querySelector(".buttons").classList.remove("pending")
     }
-    console.log(`this ${data.status}`);
     let amounts = newInvoiceForm.querySelectorAll('.total')
     let totalAmount = 0
     for (let i = 0; i < amounts.length; i++) {
