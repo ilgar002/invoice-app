@@ -1,4 +1,4 @@
-const data = [
+const initData = [
     {
         "id": "AZ3753",
         "from":
