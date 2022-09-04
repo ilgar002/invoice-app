@@ -3,8 +3,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     today()
 });
 
-
-
 window.addEventListener('keydown', function (e) {
     if (e.key == "Enter") {
         e.preventDefault()
@@ -37,7 +35,7 @@ themeButton.addEventListener("click", function () {
     if (localStorage.getItem('mode') == 'dark') {
         body.style.backgroundColor = "#f8f8fb"
         container.classList.add('light-mode')
-        
+
         localStorage.setItem('mode', 'light')
     }
     else if (localStorage.getItem('mode') == 'light') {
@@ -368,7 +366,7 @@ $(function () {
             $selected = $me.val(),
 
             $parent = $me.parents('.date-picker');
-            
+
         $parent.find('.result').children('span').html($selected);
 
         calendar.classList.remove('show')
@@ -413,7 +411,7 @@ selectTerm.addEventListener("click", function (e) {
         const clickedArea = e.composedPath();
         if (!clickedArea.includes(selectTerm)) {
             termDropdown.classList.remove("show")
-            
+
             termArrow.classList.remove('rotate-180')
         }
     })
