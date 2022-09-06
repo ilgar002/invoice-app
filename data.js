@@ -1,4 +1,4 @@
-const initData = [
+export const initData = [
     {
         "id": "AZ3753",
         "from":
@@ -120,6 +120,5 @@ const initData = [
         "total": 250
     },
 ]
-
 
 
